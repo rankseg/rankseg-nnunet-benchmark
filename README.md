@@ -9,6 +9,21 @@ Argmax and RankSEG therefore see exactly the same model output; no checkpoint, t
 changed. When v1 stores probabilities only inside its nonzero crop, the evaluator reads the adjacent restricted
 `crop_bbox` metadata and restores background probability outside the crop before either decoder runs.
 
+## Probability calibration caveat
+
+The official nnU-Net v1 checkpoints that make up most of Full-16 were trained with nnU-Net's default cross-entropy
+plus soft-Dice objective. The cached arrays used here are the exported post-softmax outputs: they are finite,
+nonnegative, and normalized to the probability simplex. Those properties do not, by themselves, establish that the
+scores are calibrated estimates of conditional class probabilities. Because RankSEG treats its inputs as
+probabilities, calibration may affect the size or direction of its gain over argmax.
+
+Full-16 therefore answers the practical plug-in question for standard official nnU-Net outputs; it does not claim
+that those outputs are calibrated or that the observed gain is independent of the training loss. No recalibration
+was fitted or tuned for this benchmark. Overconfidence is a follow-up hypothesis, not a conclusion inferred from the
+composite loss alone. A separate matched study will compare CE-only and CE + soft-Dice checkpoints while measuring
+both calibration and the RankSEG-minus-argmax effect. See the
+[fixed protocol](docs/BENCHMARK_PROTOCOL.md#probability-interpretation-and-calibration).
+
 ## Current status
 
 - The complete model registry contains all 22 nnU-Net v1 task archives released by the nnU-Net authors on

@@ -33,6 +33,28 @@ result. Probability arrays are converted to float32 for both decoders. When the 
 prelearned connected-component postprocessing, apply that fixed operation identically after argmax and RankSEG. Raw
 decoder results may be retained as sensitivity analyses but do not replace the predeclared configuration result.
 
+## Probability interpretation and calibration
+
+For mutually exclusive label tasks, nnU-Net applies softmax before exporting the arrays consumed by this benchmark.
+The evaluator verifies that these arrays are finite, nonnegative, and normalized, but normalization is not evidence
+of calibration. In particular, the official nnU-Net v1 checkpoints used in Full-16 were trained with the default
+cross-entropy plus soft-Dice objective. The benchmark must not infer overconfidence from that loss function alone.
+
+No temperature scaling, recalibration, probability transformation, or calibration-set tuning is part of Full-16.
+Argmax and RankSEG receive the same unmodified exported array. The current estimand is consequently RankSEG's
+plug-in effect on standard official nnU-Net outputs, not its performance under calibrated posterior probabilities.
+
+Any CE-only follow-up is a separate experiment and cannot retroactively replace the fixed Full-16 result. To
+attribute a difference to the training loss, CE-only and CE + soft-Dice models must be trained with matched software,
+data, folds, architecture, augmentation, schedule, checkpoint rule, ensembling, postprocessing, and random seeds.
+Comparing a newly trained CE-only model only with a historical official checkpoint must be labeled exploratory.
+The follow-up must report all four Dice results (argmax and RankSEG for each loss), their interaction
+`(RankSEG - argmax)_CE - (RankSEG - argmax)_CE+Dice`, and predeclared calibration outcomes. Claims of overconfidence
+require direct calibration evidence rather than softmax magnitude alone. Calibration endpoints should include
+case-aggregated negative log-likelihood and multiclass Brier score plus foreground/classwise ECE; binning, background
+handling, and any voxel subsampling must be fixed before results are inspected, and voxels must not be treated as
+independent observations for inference.
+
 ## Data and model selection
 
 1. Use an independent labeled test set when one exists and training overlap can be ruled out.
