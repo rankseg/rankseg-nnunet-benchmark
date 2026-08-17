@@ -1,0 +1,23 @@
+schema_version: 1
+benchmark_id: full16
+include_overall_tests: true
+
+# Paths are resolved relative to this manifest. The large local outputs tree is
+# ignored by Git; publish-evidence extracts only the files safe to version.
+summaries:
+  - ../outputs/Task001_BrainTumour_3d_fullres_oof/summary.json
+  - ../outputs/Task002_Heart_3d_fullres_oof/summary.json
+  - ../outputs/Task003_Liver_ensemble_oof/summary.json
+  - ../outputs/Task004_Hippocampus_oof/summary.json
+  - ../outputs/Task005_Prostate_ensemble_postprocessed_oof/summary.json
+  - ../outputs/Task006_Lung_ensemble_oof/summary.json
+  - ../outputs/Task007_Pancreas_ensemble_oof/summary.json
+  - ../outputs/Task008_HepaticVessel_ensemble_oof/summary.json
+  - ../outputs/Task009_Spleen_ensemble_postprocessed_oof/summary.json
+  - ../outputs/Task010_Colon_3d_cascade_fullres_oof/summary.json
+  - ../outputs/Task024_PROMISE12_independent_test/summary.json
+  - ../outputs/Task027_ACDC_ensemble_oof/summary.json
+  - ../outputs/Task038_CHAOS_ensemble_oof/summary.json
+  - ../outputs/Task055_SegTHOR_ensemble_oof/summary.json
+  - ../outputs/Task075_Fluo_C3DH_A549_3d_fullres_oof/summary.json
+  - ../outputs/CHAOS_CT_TotalSegmentator_v2_external/summary.json

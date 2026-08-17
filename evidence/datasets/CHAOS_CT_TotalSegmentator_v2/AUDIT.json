@@ -1,0 +1,95 @@
+{
+  "argmax_native_mismatch_voxels": 0,
+  "case_native_checks": [
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_001"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_002"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_005"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_006"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_008"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_010"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_014"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_016"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_018"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_019"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_021"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_022"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_023"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_024"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_025"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_026"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_027"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_028"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_029"
+    },
+    {
+      "argmax_native_mismatch_voxels": 0,
+      "case_id": "CHAOSCT_030"
+    }
+  ],
+  "cases": 20,
+  "evaluated_foreground_labels": {
+    "5": "liver"
+  },
+  "max_probability_sum_error": 1.0728836059570312e-06,
+  "max_tp_fp_fn_metric_recompute_error": 0.0,
+  "partial_ground_truth": true,
+  "probability_shape": "25 x canonical-RAS spatial dimensions",
+  "status": "pass",
+  "valid_voxels": 753401856
+}

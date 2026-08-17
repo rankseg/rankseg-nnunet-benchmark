@@ -1,0 +1,11 @@
+# Versions used for the reference environment. Install PyTorch for the local
+# CUDA runtime first when a different wheel index is required.
+torch==2.8.0
+nnunetv2==2.6.2
+rankseg==0.0.5
+SimpleITK==2.5.5
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+PyYAML==6.0.3
+psutil==7.2.2

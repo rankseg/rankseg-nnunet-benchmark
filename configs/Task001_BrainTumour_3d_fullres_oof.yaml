@@ -1,0 +1,64 @@
+dataset:
+  id: Task001_BrainTumour
+  display_name: MSD BrainTumour (official nnU-Net v1, 3d_fullres OOF; BraTS regions)
+  labels:
+    0: background
+    1: whole tumour
+    2: tumour core
+    3: enhancing tumour
+  channel_labels: [0, 1, 2, 3]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task001_BrainTumour_3d_fullres/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task001_BrainTumour/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task001_BrainTumour_3d_fullres/fold_predictions
+  native_predictions_postprocessed: false
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2, 3]
+  regions:
+    1: [1, 2, 3]
+    2: [2, 3]
+    3: [3]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260812
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/3d_fullres/Task001_BrainTumour/nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task001_BrainTumour_3d_fullres_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; every case predicted by the one fold that did not train on it
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  confirmation_cohort_status: fourth dataset in the prospective cohort locked on 2026-07-28; executed after the predeclared small-cohort Task055 order amendment
+  model_configuration: 3d_fullres, nnUNetTrainerV2, nnUNetPlansv2.1, model_final_checkpoint
+  configuration_role: primary; highest official validation average (0.7411) in archive summary.csv
+  configuration_selected_before_rankseg_evaluation: true
+  official_validation_average: 0.7411
+  metric_regions: whole tumour=(1,2,3); tumour core=(2,3); enhancing tumour=(3)
+  source_label_semantics: 1=edema; 2=non-enhancing tumour; 3=enhancing tumour
+  decoder_semantics: both argmax and RankSEG decode the original mutually exclusive four-channel softmax; predictions are then scored on the three official nested regions
+  model_url: https://zenodo.org/api/records/4003545/files/Task001_BrainTumour.zip/content
+  model_md5: 08f648c1247ab5deab2465ddc84f2feb
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://msd-for-monai.s3-us-west-2.amazonaws.com/Task01_BrainTumour.tar
+  dataset_size_bytes: 7608266240
+  dataset_md5: 240a19d752f0d9e9101544901065d872
+  dataset_license: CC-BY-SA-4.0
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

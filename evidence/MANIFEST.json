@@ -1,0 +1,285 @@
+{
+  "aggregate_schema_version": 3,
+  "case_count": 2181,
+  "dataset_count": 16,
+  "datasets": [
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task001_BrainTumour/case_paired_deltas.csv",
+      "cases": 484,
+      "dataset_id": "Task001_BrainTumour",
+      "summary": "datasets/Task001_BrainTumour/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task002_Heart/case_paired_deltas.csv",
+      "cases": 20,
+      "dataset_id": "Task002_Heart",
+      "summary": "datasets/Task002_Heart/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task003_Liver/case_paired_deltas.csv",
+      "cases": 131,
+      "dataset_id": "Task003_Liver",
+      "summary": "datasets/Task003_Liver/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task004_Hippocampus/case_paired_deltas.csv",
+      "cases": 260,
+      "dataset_id": "Task004_Hippocampus",
+      "summary": "datasets/Task004_Hippocampus/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task005_Prostate/case_paired_deltas.csv",
+      "cases": 32,
+      "dataset_id": "Task005_Prostate",
+      "summary": "datasets/Task005_Prostate/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task006_Lung/case_paired_deltas.csv",
+      "cases": 63,
+      "dataset_id": "Task006_Lung",
+      "summary": "datasets/Task006_Lung/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task007_Pancreas/case_paired_deltas.csv",
+      "cases": 281,
+      "dataset_id": "Task007_Pancreas",
+      "summary": "datasets/Task007_Pancreas/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task008_HepaticVessel/case_paired_deltas.csv",
+      "cases": 303,
+      "dataset_id": "Task008_HepaticVessel",
+      "summary": "datasets/Task008_HepaticVessel/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task009_Spleen/case_paired_deltas.csv",
+      "cases": 41,
+      "dataset_id": "Task009_Spleen",
+      "summary": "datasets/Task009_Spleen/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task010_Colon/case_paired_deltas.csv",
+      "cases": 126,
+      "dataset_id": "Task010_Colon",
+      "summary": "datasets/Task010_Colon/summary.json"
+    },
+    {
+      "audit": "datasets/Task024_PROMISE12_Test/AUDIT.json",
+      "case_paired_deltas": "datasets/Task024_PROMISE12_Test/case_paired_deltas.csv",
+      "cases": 30,
+      "dataset_id": "Task024_PROMISE12_Test",
+      "summary": "datasets/Task024_PROMISE12_Test/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task027_ACDC/case_paired_deltas.csv",
+      "cases": 200,
+      "dataset_id": "Task027_ACDC",
+      "summary": "datasets/Task027_ACDC/summary.json"
+    },
+    {
+      "audit": "datasets/Task038_CHAOS/AUDIT.json",
+      "case_paired_deltas": "datasets/Task038_CHAOS/case_paired_deltas.csv",
+      "cases": 60,
+      "dataset_id": "Task038_CHAOS",
+      "summary": "datasets/Task038_CHAOS/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task055_SegTHOR/case_paired_deltas.csv",
+      "cases": 40,
+      "dataset_id": "Task055_SegTHOR",
+      "summary": "datasets/Task055_SegTHOR/summary.json"
+    },
+    {
+      "audit": null,
+      "case_paired_deltas": "datasets/Task075_Fluo_C3DH_A549/case_paired_deltas.csv",
+      "cases": 90,
+      "dataset_id": "Task075_Fluo_C3DH_A549",
+      "summary": "datasets/Task075_Fluo_C3DH_A549/summary.json"
+    },
+    {
+      "audit": "datasets/CHAOS_CT_TotalSegmentator_v2/AUDIT.json",
+      "case_paired_deltas": "datasets/CHAOS_CT_TotalSegmentator_v2/case_paired_deltas.csv",
+      "cases": 20,
+      "dataset_id": "CHAOS_CT_TotalSegmentator_v2",
+      "summary": "datasets/CHAOS_CT_TotalSegmentator_v2/summary.json"
+    }
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "d5f7b3f58cb1d3ecf37ea2b383956148d2479449eda7e608cffe86c92377c85f",
+      "size_bytes": 1059
+    },
+    "datasets/CHAOS_CT_TotalSegmentator_v2/AUDIT.json": {
+      "sha256": "ec4b92de74e7ef4dd1edeb2e2041d60e6cf92abe8519bfbf1e598412f179ba9f",
+      "size_bytes": 2109
+    },
+    "datasets/CHAOS_CT_TotalSegmentator_v2/case_paired_deltas.csv": {
+      "sha256": "fc65477912df04f9cd5c49ac29e367f3322421fe2a4f05786ab8304ddb424c6a",
+      "size_bytes": 2798
+    },
+    "datasets/CHAOS_CT_TotalSegmentator_v2/summary.json": {
+      "sha256": "7aeeeeefe8805895582c809b41604629093a98fc151d7566239f6ac14a00ff91",
+      "size_bytes": 11525
+    },
+    "datasets/Task001_BrainTumour/case_paired_deltas.csv": {
+      "sha256": "07a0ee2b9ca17b942adc16c73f26b7850e7ad4e33bfa3d51af6ea52b34e534b2",
+      "size_bytes": 63348
+    },
+    "datasets/Task001_BrainTumour/summary.json": {
+      "sha256": "cfa5bfc3fdaf2086a3f526092b9b40f5b4eb63b60f6614bb5ad11c9fd452160c",
+      "size_bytes": 10597
+    },
+    "datasets/Task002_Heart/case_paired_deltas.csv": {
+      "sha256": "2d57dcc8417ad1f8feca2769a380597a6c69444634c0b42f53e2809afe93ac43",
+      "size_bytes": 2709
+    },
+    "datasets/Task002_Heart/summary.json": {
+      "sha256": "842b933f073b63dcf0d4a4d59d5822da09eae08b7af85b97d5cd25e3147d7554",
+      "size_bytes": 9592
+    },
+    "datasets/Task003_Liver/case_paired_deltas.csv": {
+      "sha256": "fe7eac14ae4b51f263714bf5bc1e75673b21255391ccd80d2855212c160650ec",
+      "size_bytes": 16911
+    },
+    "datasets/Task003_Liver/summary.json": {
+      "sha256": "b6bd0659c34aa42ae35623187754c229ce6c957716440bb4711c18df827af01b",
+      "size_bytes": 10889
+    },
+    "datasets/Task004_Hippocampus/case_paired_deltas.csv": {
+      "sha256": "d8dd84f505c3064bd395bf485514424679b5cf055aa66bb1b0139ab83947a1a0",
+      "size_bytes": 35689
+    },
+    "datasets/Task004_Hippocampus/summary.json": {
+      "sha256": "007c59ea98f928317b7794ce2829af5c76b859d5743ad28f22a502bfbe303c5d",
+      "size_bytes": 9667
+    },
+    "datasets/Task005_Prostate/case_paired_deltas.csv": {
+      "sha256": "a13a01579304c447f645dce35ac58a290de1e243449f0c7587bc51aca6626bef",
+      "size_bytes": 4302
+    },
+    "datasets/Task005_Prostate/summary.json": {
+      "sha256": "81f3ef51499bdc095f2041727d04bbabe30f26096ef0bf901fed2ed6b4cbc9b7",
+      "size_bytes": 10080
+    },
+    "datasets/Task006_Lung/case_paired_deltas.csv": {
+      "sha256": "39aa22a2759f90f73f7cdeb0d627e962e68e3459f05cbe33d8cf4010354472c1",
+      "size_bytes": 7780
+    },
+    "datasets/Task006_Lung/summary.json": {
+      "sha256": "4a067c4fc422d01572162b29afd37008dd69f49cc90e6d1fb20c26aaa08545f0",
+      "size_bytes": 10140
+    },
+    "datasets/Task007_Pancreas/case_paired_deltas.csv": {
+      "sha256": "9f2ea62b98cea22bcb7a5c10b5d3893debfb1d27f55ee37c19e995346a035b65",
+      "size_bytes": 37237
+    },
+    "datasets/Task007_Pancreas/summary.json": {
+      "sha256": "c5f0dac2f46adce10ec744f48e7caf22059c0a1cb09762aa4696f07283812363",
+      "size_bytes": 10454
+    },
+    "datasets/Task008_HepaticVessel/case_paired_deltas.csv": {
+      "sha256": "059d1a9296dd0d369f09dd5568bd8950215074f22d1a91e51fd06ffa198234ef",
+      "size_bytes": 41560
+    },
+    "datasets/Task008_HepaticVessel/summary.json": {
+      "sha256": "70fff080c95d342ff5f4edc8251cd0c2605ac9460f7b99509675a5777a9f2cc7",
+      "size_bytes": 10399
+    },
+    "datasets/Task009_Spleen/case_paired_deltas.csv": {
+      "sha256": "6226135cd5734a44f7619e9a8911edb8e2e3e0eefb2087117d7643ebf2e78e5e",
+      "size_bytes": 5528
+    },
+    "datasets/Task009_Spleen/summary.json": {
+      "sha256": "cf4234fd84b06c69c33de00da24340349c6ff3d1b67c4ba4c4985a0d11650495",
+      "size_bytes": 9867
+    },
+    "datasets/Task010_Colon/case_paired_deltas.csv": {
+      "sha256": "4e069dcf9cd7c9fda998b20687e2e4d4ad0924a3a0a9cbdebe250131b3b36435",
+      "size_bytes": 12799
+    },
+    "datasets/Task010_Colon/summary.json": {
+      "sha256": "b07733514d7f5c77e81168bdd7e90a80252565d6ed361bb7e6b5427895410217",
+      "size_bytes": 9691
+    },
+    "datasets/Task024_PROMISE12_Test/AUDIT.json": {
+      "sha256": "de3029c78844045a21473f9ed04fe5c19d08cce5bbea8ed329a3bd78500663d5",
+      "size_bytes": 2115
+    },
+    "datasets/Task024_PROMISE12_Test/case_paired_deltas.csv": {
+      "sha256": "2833378c4f34cac54aa56b2daed89f0d0a51fdc29e114d65996105f47365d4ff",
+      "size_bytes": 3963
+    },
+    "datasets/Task024_PROMISE12_Test/summary.json": {
+      "sha256": "e92fe6cb854454d75438d1f7b71e76273c17c328ead1b9895dac23c22adcc16e",
+      "size_bytes": 10342
+    },
+    "datasets/Task027_ACDC/case_paired_deltas.csv": {
+      "sha256": "1650fc472edf0a2a24f20c466408d0607ee09dc85b6084ae32c7297c17f5aac4",
+      "size_bytes": 30151
+    },
+    "datasets/Task027_ACDC/summary.json": {
+      "sha256": "860513fc0247e6294bce3e68d351a3090d5f6b23143ad82c3452e54234725fb8",
+      "size_bytes": 11191
+    },
+    "datasets/Task038_CHAOS/AUDIT.json": {
+      "sha256": "fd672bf01741fb13cafe7748b29c0edef2be6ce8b0d70f2e4a363ca59551a069",
+      "size_bytes": 2146
+    },
+    "datasets/Task038_CHAOS/case_paired_deltas.csv": {
+      "sha256": "b196aefd9b967eb91d87cb20cceff1bc6fc6abdf7d28a61141f4e76521eeb501",
+      "size_bytes": 7974
+    },
+    "datasets/Task038_CHAOS/summary.json": {
+      "sha256": "4175210412df79c4dcdde9796210bcaee3dec1e328081000100410d0b275bd7d",
+      "size_bytes": 11236
+    },
+    "datasets/Task055_SegTHOR/case_paired_deltas.csv": {
+      "sha256": "10d1af2d1a246441a1e93fce7a909d79da778bcfa132b2637221684ead392dad",
+      "size_bytes": 5410
+    },
+    "datasets/Task055_SegTHOR/summary.json": {
+      "sha256": "5558915eb8c955fb69d4315f2ef235e3199a43911a53b97807c885503ee12d7b",
+      "size_bytes": 10232
+    },
+    "datasets/Task075_Fluo_C3DH_A549/case_paired_deltas.csv": {
+      "sha256": "d223b2109606b7ca678ffdff6608244de830c3fdb925d165688b3a832bc9025c",
+      "size_bytes": 15482
+    },
+    "datasets/Task075_Fluo_C3DH_A549/summary.json": {
+      "sha256": "747b23246d41caa114b381fb973cb60f244c389cbd05ef7c802465089c78d519",
+      "size_bytes": 10342
+    },
+    "full16/RESULTS.md": {
+      "sha256": "def95373b99c22ff1ee03fdbcec07499fac8722d84f59c4cc0538d8193e1bf43",
+      "size_bytes": 3014
+    },
+    "full16/aggregate_summary.json": {
+      "sha256": "51c1a996052a7bb3f23f4711f4876feceec618ba90d26a4388af1cb61bc7b2f7",
+      "size_bytes": 3252
+    },
+    "full16/case_paired_deltas.csv": {
+      "sha256": "e51a0aa0234c5e253ad19a31485d12deea36be7b5b7ffdf24e2ed4dd39bbaa60",
+      "size_bytes": 111776
+    },
+    "full16/dataset_summary.csv": {
+      "sha256": "772cfd28c213e704ce9bcabfbb26d87ec4e97db13a3d12a06f99ee9404646c23",
+      "size_bytes": 5428
+    }
+  },
+  "include_overall_tests": true,
+  "schema_version": 1,
+  "source_manifest": "configs/full16_evidence.yaml",
+  "summary_schema_version": 3
+}

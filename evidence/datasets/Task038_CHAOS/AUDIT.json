@@ -1,0 +1,85 @@
+{
+  "cases": 60,
+  "cases_per_patient": 3,
+  "ensemble_probability_audit": {
+    "definition": "float16((float32(2d) + float32(3d_fullres)) / 2)",
+    "elements": 530389480,
+    "max_absolute_error_vs_float16_mean": 0.0,
+    "max_absolute_error_vs_float32_mean": 0.000244140625,
+    "mismatched_elements_vs_float16_mean": 0
+  },
+  "file_counts": {
+    "2d_npz": 60,
+    "3d_npz": 60,
+    "ensemble_npz": 60
+  },
+  "fold_validation_case_counts": [
+    12,
+    12,
+    12,
+    12,
+    12
+  ],
+  "metric_audits": {
+    "2d": {
+      "cases": 60,
+      "max_tp_fp_fn_metric_recompute_error": 0.0,
+      "native_argmax_mismatch_voxels": 3665,
+      "rankseg_minus_argmax": {
+        "dice": 0.002698277517423575,
+        "iou": 0.0032897422380355756
+      },
+      "recomputed": {
+        "argmax": {
+          "mean_dice": 0.9008690841060788,
+          "mean_iou": 0.8329250864235972
+        },
+        "rankseg": {
+          "mean_dice": 0.9035673616235024,
+          "mean_iou": 0.8362148286616328
+        }
+      }
+    },
+    "2d_3d_ensemble": {
+      "cases": 60,
+      "max_tp_fp_fn_metric_recompute_error": 0.0,
+      "native_argmax_mismatch_voxels": 0,
+      "rankseg_minus_argmax": {
+        "dice": 0.0017600960046935121,
+        "iou": 0.002545956020752471
+      },
+      "recomputed": {
+        "argmax": {
+          "mean_dice": 0.920438905729706,
+          "mean_iou": 0.8612341347460793
+        },
+        "rankseg": {
+          "mean_dice": 0.9221990017343995,
+          "mean_iou": 0.8637800907668318
+        }
+      }
+    },
+    "3d_fullres": {
+      "cases": 60,
+      "max_tp_fp_fn_metric_recompute_error": 0.0,
+      "native_argmax_mismatch_voxels": 511,
+      "rankseg_minus_argmax": {
+        "dice": 4.0681003179443564e-05,
+        "iou": 6.69744665875438e-05
+      },
+      "recomputed": {
+        "argmax": {
+          "mean_dice": 0.9200512613377121,
+          "mean_iou": 0.8600602147991879
+        },
+        "rankseg": {
+          "mean_dice": 0.9200919423408915,
+          "mean_iou": 0.8601271892657755
+        }
+      }
+    }
+  },
+  "patient_sequences_are_fold_colocated": true,
+  "patients": 20,
+  "status": "pass"
+}

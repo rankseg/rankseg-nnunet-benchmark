@@ -216,3 +216,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Large benchmark artifacts
+/artifacts/
+/data/
+/outputs/
+/work/
+/evidence-new/
+*.nii
+*.nii.gz
+*.npz
+*.pth
+*.pkl
+*.zip
+*.tar
+*.tar.gz

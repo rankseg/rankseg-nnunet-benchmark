@@ -1,0 +1,114 @@
+{
+  "case_level_safety": {
+    "complete": true,
+    "datasets_total": 16,
+    "datasets_with_case_data": 16,
+    "dice": {
+      "best": {
+        "case_id": "colon_108",
+        "dataset_id": "Task010_Colon",
+        "delta": 0.5142331960572833
+      },
+      "cases": 2181,
+      "improved_over_1pp": 246,
+      "practical_threshold_pp": 1,
+      "stable_within_1pp": 1802,
+      "thresholds": {
+        "10_pp": {
+          "negative": 9,
+          "negative_fraction": 0.0041265474552957355,
+          "positive": 31,
+          "positive_fraction": 0.014213663457129757
+        },
+        "1_pp": {
+          "negative": 133,
+          "negative_fraction": 0.06098120128381476,
+          "positive": 246,
+          "positive_fraction": 0.11279229711141678
+        },
+        "5_pp": {
+          "negative": 26,
+          "negative_fraction": 0.01192113709307657,
+          "positive": 64,
+          "positive_fraction": 0.029344337459880788
+        }
+      },
+      "worsened_over_1pp": 133,
+      "worst": {
+        "case_id": "colon_107",
+        "dataset_id": "Task010_Colon",
+        "delta": -0.4463320416603986
+      }
+    },
+    "unit_of_analysis": "case"
+  },
+  "dice": {
+    "argmax_mean": 0.8363646469836163,
+    "datasets": 16,
+    "exact_two_sided_sign_test_p": 0.021270751953125,
+    "maximum_delta": 0.011668957276955272,
+    "mean_delta": 0.002067104734951662,
+    "median_delta": 9.787851853887419e-05,
+    "minimum_delta": -0.0008216817844923785,
+    "negative": 3,
+    "positive": 13,
+    "rankseg_mean": 0.838431751718568,
+    "wilcoxon_two_sided_p": 0.010986328125,
+    "zero": 0
+  },
+  "schema_version": 3,
+  "tail_analysis": {
+    "difficult_case_analysis": {
+      "bottom_performance_quantile_uplift": {
+        "dice": {
+          "q05": {
+            "datasets": 16,
+            "maximum_delta": 0.027075962329448255,
+            "mean_delta": -0.007713870382971631,
+            "median_delta": 0.0004242821108689232,
+            "minimum_delta": -0.1668627148492165,
+            "negative": 5,
+            "positive": 10,
+            "zero": 1
+          },
+          "q10": {
+            "datasets": 16,
+            "maximum_delta": 0.020118742683149615,
+            "mean_delta": 0.0014914158201231147,
+            "median_delta": 0.0002916283482163329,
+            "minimum_delta": -0.006340354842960472,
+            "negative": 4,
+            "positive": 11,
+            "zero": 1
+          }
+        }
+      }
+    },
+    "safety_analysis_paired_case_delta_quantiles": {
+      "dice": {
+        "q05": {
+          "datasets": 16,
+          "maximum_delta": -9.18297401009127e-05,
+          "mean_delta": -0.012329840515771144,
+          "median_delta": -0.006051197779953326,
+          "minimum_delta": -0.0435370250095895,
+          "negative": 16,
+          "positive": 0,
+          "zero": 0
+        },
+        "q10": {
+          "datasets": 16,
+          "maximum_delta": -5.3497818859371545e-05,
+          "mean_delta": -0.005731451886926221,
+          "median_delta": -0.0030899092813700727,
+          "minimum_delta": -0.022368349317400782,
+          "negative": 16,
+          "positive": 0,
+          "zero": 0
+        }
+      }
+    },
+    "unit_of_analysis": "dataset"
+  },
+  "unit_of_analysis": "dataset"
+}

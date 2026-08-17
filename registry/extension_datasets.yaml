@@ -1,0 +1,32 @@
+source:
+  title: Official challenge training archives for nnU-Net v1 extension tasks
+  note: Object metadata and integrity identifiers are recorded before decoder evaluation.
+
+datasets:
+  - task: Task038_CHAOS_Train
+    file: CHAOS_Train_Sets.zip
+    url: https://zenodo.org/api/records/3431873/files/CHAOS_Train_Sets.zip/content
+    size_bytes: 890771694
+    md5: df21053002a1cc86df918a87da3b2c19
+    cohort: oof_training
+    doi: https://doi.org/10.5281/zenodo.3431873
+    license: CC-BY-NC-SA-4.0
+    integrity_note: Official CHAOS v1.03 Zenodo training archive; MRI cohort contains 20 patients with T1-DUAL and T2-SPIR images and four-organ masks.
+  - task: Task024_PROMISE12_Test
+    file: PROMISE12_test_data.zip
+    url: https://zenodo.org/api/records/8026660/files/test_data.zip/content
+    size_bytes: 194659961
+    md5: 823ef560f4a54083348e58d67403e4bb
+    cohort: independent_test
+    doi: https://doi.org/10.5281/zenodo.8026660
+    license: Research use; mandatory citation of https://doi.org/10.1016/j.media.2013.12.002
+    integrity_note: Official PROMISE12 Zenodo release; archive contains all 30 former hidden-test images and masks.
+  - task: Task055_SegTHOR_Train
+    file: SegTHOR_train.zip
+    url: https://codalab.lisn.upsaclay.fr/my/datasets/download/3d24ba7b-42fd-469e-b5f5-dfcd3a0ac2f5
+    size_bytes: 1820142473
+    s3_multipart_etag: 995ab30a70e07c4382412e4004ef23f5-217
+    s3_part_size_bytes: 8388608
+    object_last_modified: 2023-04-14T11:25:55Z
+    object_version_id: 051d148f-13a1-49ee-a9e5-6eaf8757590e
+    integrity_note: Official MinIO object metadata; final ZIP CRC is also tested before extraction.

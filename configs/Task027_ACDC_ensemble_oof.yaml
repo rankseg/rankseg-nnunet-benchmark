@@ -1,0 +1,62 @@
+dataset:
+  id: Task027_ACDC
+  display_name: ACDC (official nnU-Net v1, 2D + 3D fullres ensemble OOF; patient-clustered)
+  labels:
+    0: background
+    1: right ventricle
+    2: myocardium
+    3: left ventricle cavity
+  channel_labels: [0, 1, 2, 3]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task027_ACDC_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task027_ACDC/labelsTr
+  probability_glob: "fold_*/not_postprocessed/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task027_ACDC_ensemble/fold_predictions
+  native_predictions_postprocessed: false
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2, 3]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260814
+  cluster_regex: "^(patient[0-9]{3})_frame[0-9]+$"
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task027_ACDC/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task027_ACDC_ensemble_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; both ED and ES observations of each patient remain in the same fold
+  split: exact nnU-Net v1 ACDC conversion protocol; patient-level KFold(n_splits=5, shuffle=true, random_state=12345)
+  uncertainty: primary paired case bootstrap plus patient-clustered paired bootstrap (100 patients)
+  confirmation_cohort_status: predeclared extension dataset in the Core-12 official-v1 OOF subset
+  model_configuration: arithmetic mean of official 2d and 3d_fullres OOF probabilities
+  configuration_role: primary; highest official validation average (0.9228) selected before RankSEG evaluation
+  configuration_selected_before_rankseg_evaluation: true
+  component_official_validation_averages: 2d=0.9165; 3d_fullres=0.9181
+  official_ensemble_validation_average: 0.9228
+  model_url: https://zenodo.org/api/records/4003545/files/Task027_ACDC.zip/content
+  model_mirror: https://zenodo.org/api/records/3734294/files/Task027_ACDC.zip/content
+  model_md5: 70723b2d5dd7237e38461128b5d5c601
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://humanheart-project.creatis.insa-lyon.fr/database/api/v1/folder/63721d7073e9f0047faa0525/download
+  dataset_scope: official labeled training database; 100 patients and two annotated cardiac phases per patient
+  dataset_selected_files: 400 official Girder items (200 ED/ES images plus 200 labels); 115805231 bytes; 4D cine files excluded because they are not inference inputs
+  dataset_download_manifest: work/v1/source_data/ACDC_official_training/official_download_manifest.json
+  dataset_download_manifest_sha256: 5d737bdc32f2b6cc5743a305479eb1ad47e87035c5e5c535fa41cbe87a354f54
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

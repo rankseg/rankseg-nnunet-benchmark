@@ -1,0 +1,54 @@
+dataset:
+  id: Task006_Lung
+  display_name: MSD Lung (official 3D lowres + fullres ensemble OOF; official no-op postprocessing)
+  labels:
+    0: background
+    1: lung tumour
+  channel_labels: [0, 1]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task006_Lung_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task006_Lung/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task006_Lung/ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/ensembled_raw
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260728
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task006_Lung/ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task006_Lung_ensemble_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; every case predicted by the one fold that did not train on it
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  model_configuration: arithmetic mean of official 3d_lowres and 3d_fullres OOF probabilities
+  configuration_role: primary; highest official validation average from per-configuration postprocessing.json fallback
+  configuration_selected_before_rankseg_evaluation: true
+  component_official_validation_averages: 3d_lowres=0.7109356428939274; 3d_fullres=0.7210804161410569
+  official_ensemble_validation_average: 0.724114554965431
+  official_postprocessing: no-op; for_which_classes is empty
+  model_url: https://zenodo.org/api/records/4003545/files/Task006_Lung.zip/content
+  model_md5: 9c7f89f3b2153292f69d6478da6a218f
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://msd-for-monai.s3-us-west-2.amazonaws.com/Task06_Lung.tar
+  dataset_md5: 8afd997733c7fc0432f71255ba4e52dc
+  dataset_license: CC-BY-SA-4.0
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

@@ -1,0 +1,87 @@
+dataset:
+  id: CHAOS_CT_TotalSegmentator_v2
+  display_name: CHAOS CT (TotalSegmentator nnU-Net v2 Dataset291; external liver GT)
+  labels:
+    0: background
+    1: spleen
+    2: kidney_right
+    3: kidney_left
+    4: gallbladder
+    5: liver
+    6: stomach
+    7: pancreas
+    8: adrenal_gland_right
+    9: adrenal_gland_left
+    10: lung_upper_lobe_left
+    11: lung_lower_lobe_left
+    12: lung_upper_lobe_right
+    13: lung_middle_lobe_right
+    14: lung_lower_lobe_right
+    15: esophagus
+    16: trachea
+    17: thyroid_gland
+    18: small_bowel
+    19: duodenum
+    20: colon
+    21: urinary_bladder
+    22: prostate
+    23: kidney_cyst_left
+    24: kidney_cyst_right
+  channel_labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v2/predictions/CHAOS_CT_Dataset291
+  labels_dir: ../work/v2/datasets/CHAOS_CT_external/labelsTs
+  probability_glob: "*.npz"
+  probability_key: probabilities
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v2/predictions/CHAOS_CT_Dataset291
+  native_predictions_postprocessed: false
+  segmentation_reader: nnunetv2_reoriented
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  # CHAOS CT supplies liver labels only. RankSEG still decodes all native 25
+  # Dataset291 channels; only the liver endpoint is interpreted.
+  foreground_labels: [5]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260816
+
+outputs:
+  dir: ../outputs/CHAOS_CT_TotalSegmentator_v2_external
+
+provenance:
+  evaluation_design: external labeled cohort; no fitting or threshold selection on CHAOS CT
+  dataset_scope: 20 CHAOS CT patients with manual liver ground truth; CT patients are distinct from the CHAOS MRI cohort
+  partial_ground_truth: only liver is annotated and only liver Dice/IoU enters the dataset endpoint
+  model: TotalSegmentator v2 Dataset291 part1 organs, nnUNetTrainerNoMirroring, nnUNetPlans 3d_fullres, fold 0
+  checkpoint: checkpoint_final.pth
+  checkpoint_epoch: checkpoint current_epoch=1001 (final checkpoint after the 1000-epoch schedule)
+  test_time_augmentation: disabled; trainer records inference_allowed_mirroring_axes=None and TotalSegmentator config disables mirroring
+  probability_export: nnUNetv2_predict --save_probabilities; float32 probabilities; native 25-channel softmax
+  coordinate_handling: labels and native masks read with nnU-Net v2 NibabelIOWithReorient semantics to match saved probability arrays
+  model_url: https://github.com/wasserth/TotalSegmentator/releases/download/v2.0.0-weights/Dataset291_TotalSegmentator_part1_organs_1559subj.zip
+  model_size_bytes: 233742255
+  model_sha256: 2cde8e6bcfb5b6a02183648a7036c3d6b28bc854576f8e1c34fbd6b4dd5c6c5b
+  model_training_cases: 1559
+  dataset_url: https://zenodo.org/records/3362845
+  dataset_size_bytes: 890771694
+  dataset_md5: df21053002a1cc86df918a87da3b2c19
+  dataset_license: CC-BY-NC-SA-4.0
+  institutional_provenance: CHAOS is from Dokuz Eylul University; TotalSegmentator is led by University Hospital Basel and trained on multi-site routine CT
+  overlap_status: no overlap identified, but every subject in the 1559-case model training set is not publicly enumerated; report as supplementary external-v2 replication
+  configuration_role: full-benchmark external-v2 cohort; added after the Core-12 official-v1 OOF subset was locked
+  configuration_selected_before_rankseg_evaluation: true
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

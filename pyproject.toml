@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rankseg-nnunet-bench"
+version = "0.1.0"
+description = "Reproducible paired benchmark of argmax and RankSEG on nnU-Net probabilities"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dependencies = [
+  "nibabel>=5.0",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "PyYAML>=6.0",
+  "scipy>=1.10",
+  "SimpleITK>=2.2",
+  "torch>=2.0",
+  "rankseg>=0.0.5",
+]
+
+[project.optional-dependencies]
+test = [
+  "coverage==7.15.2",
+  "nnunet==1.7.1",
+  "pytest==9.1.1",
+]
+
+[project.scripts]
+rankseg-nnunet-bench = "rankseg_nnunet_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

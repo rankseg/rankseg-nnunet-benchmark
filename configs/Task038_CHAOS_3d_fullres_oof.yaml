@@ -1,0 +1,53 @@
+dataset:
+  id: Task038_CHAOS_3d_fullres
+  display_name: CHAOS MRI (official nnU-Net v1, 3D fullres OOF; patient-clustered sensitivity)
+  labels:
+    0: background
+    1: liver
+    2: right kidney
+    3: left kidney
+    4: spleen
+  channel_labels: [0, 1, 2, 3, 4]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task038_CHAOS_3d_fullres/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task038_CHAOS_Task_3_5_Variant2/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task038_CHAOS_3d_fullres/fold_predictions
+  native_predictions_postprocessed: true
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2, 3, 4]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260814
+  cluster_regex: "^(?:T1_in_|T1_out_|T2_)([0-9]+)$"
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/3d_fullres/Task038_CHAOS_Task_3_5_Variant2/nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task038_CHAOS_3d_fullres_oof_sensitivity
+
+provenance:
+  evaluation_design: five-fold patient-level out-of-fold sensitivity analysis
+  model_configuration: official 3d_fullres fold-specific model_final_checkpoint probabilities
+  configuration_role: sensitivity analysis; not an additional dataset in the cross-dataset aggregate
+  configuration_selected_before_rankseg_evaluation: true
+  official_validation_average: 0.9196
+  test_time_augmentation: nnU-Net default mirroring enabled
+  model_md5: 57bc8bc3c80a5dc08917aafd517407b4
+  dataset_md5: df21053002a1cc86df918a87da3b2c19
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

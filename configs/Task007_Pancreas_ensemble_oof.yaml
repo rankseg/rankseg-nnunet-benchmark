@@ -1,0 +1,56 @@
+dataset:
+  id: Task007_Pancreas
+  display_name: MSD Pancreas (official 3D fullres + cascade ensemble OOF + official postprocessing)
+  labels:
+    0: background
+    1: pancreas
+    2: pancreas tumour
+  channel_labels: [0, 1, 2]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task007_Pancreas_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task007_Pancreas/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task007_Pancreas/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/ensembled_postprocessed
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260729
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task007_Pancreas/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task007_Pancreas_ensemble_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; every case predicted by the one fold that did not train on it
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  model_configuration: arithmetic mean of official 3d_fullres and 3d_cascade_fullres OOF probabilities
+  configuration_role: primary; highest official validation average (0.6821) in archive summary.csv
+  configuration_selected_before_rankseg_evaluation: true
+  component_official_validation_averages: 3d_fullres=0.6745; 3d_cascade_fullres=0.6766
+  official_ensemble_validation_average: 0.6821201915567195
+  official_ensemble_class_dice_raw: pancreas=0.8213936554942695; pancreas_tumour=0.5428467276191696
+  official_postprocessing: no-op; for_which_classes is empty
+  model_url: https://zenodo.org/api/records/4003545/files/Task007_Pancreas.zip/content
+  model_md5: f8983162ffb28664221e74bc63dc5c99
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://msd-for-monai.s3-us-west-2.amazonaws.com/Task07_Pancreas.tar
+  dataset_md5: 4f7080cfca169fa8066d17ce6eb061e4
+  dataset_license: CC-BY-SA-4.0
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

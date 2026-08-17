@@ -1,0 +1,15 @@
+task,configuration,official_validation_average,selected_primary,status,note,archive_md5,archive_url
+Task027_ACDC,2d,0.9165,False,available,,70723b2d5dd7237e38461128b5d5c601,https://zenodo.org/api/records/4003545/files/Task027_ACDC.zip/content
+Task027_ACDC,3d_fullres,0.9181,False,available,,70723b2d5dd7237e38461128b5d5c601,https://zenodo.org/api/records/4003545/files/Task027_ACDC.zip/content
+Task027_ACDC,ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1,0.9228,True,available,,70723b2d5dd7237e38461128b5d5c601,https://zenodo.org/api/records/4003545/files/Task027_ACDC.zip/content
+Task055_SegTHOR,2d,0.8987,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,3d_lowres,0.8956,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,3d_fullres,0.9133,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,3d_cascade_fullres,0.9141,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1,0.9077,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1,0.9129,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1,0.9136,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1,0.9111,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1,0.9114,False,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task055_SegTHOR,ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1,0.915,True,available,,ae464374487596ab54f9d24bfd14b767,https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+Task076_Fluo_N3DH_SIM,,,,summary_unavailable,Could not identify official summary.csv or per-configuration postprocessing.json for Task076_Fluo_N3DH_SIM; summary candidates: [],d14246688098a797fd5862867a6a3336,https://zenodo.org/api/records/4003545/files/Task076_Fluo_N3DH_SIM.zip/content

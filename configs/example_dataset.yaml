@@ -1,0 +1,49 @@
+dataset:
+  id: DatasetXXX_Name
+  display_name: Human-readable dataset name
+  labels:
+    0: background
+    1: foreground
+  # Channel index i in the npz maps to channel_labels[i]. This matters for
+  # non-consecutive nnU-Net labels such as BraTS label 4.
+  channel_labels: [0, 1]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../data/DatasetXXX/probabilities
+  labels_dir: ../data/DatasetXXX/labels
+  probability_glob: "*.npz"
+  probability_key: auto  # recognizes v2 "probabilities" and v1 "softmax"
+  label_extension: .nii.gz
+  # Use nnunetv2_reoriented when the model's dataset.json specifies
+  # NibabelIOWithReorient and probabilities come directly from nnUNetv2_predict.
+  segmentation_reader: simpleitk
+  # Optional diagnostic only; postprocessing can make this differ from argmax.
+  native_predictions_dir: ../data/DatasetXXX/native_predictions
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1]
+  bootstrap_samples: 2000
+  bootstrap_seed: 20260717
+
+outputs:
+  dir: ../outputs/DatasetXXX_Name
+
+provenance:
+  model_url: null
+  model_checksum: null
+  dataset_url: null
+  dataset_checksum: null
+  split: independent_test_or_out_of_fold

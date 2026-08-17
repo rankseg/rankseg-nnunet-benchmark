@@ -1,0 +1,318 @@
+{
+  "dataset": {
+    "cases": 41,
+    "channel_labels": [
+      0,
+      1
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Spleen (official 3D fullres + cascade ensemble OOF + official postprocessing)",
+    "foreground_labels": [
+      1
+    ],
+    "id": "Task009_Spleen",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "spleen"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.00048828125,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "spleen_44",
+          "delta": 0.005551075993355
+        },
+        "cases": 41,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 41,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "spleen_24",
+          "delta": -0.0013365146996421
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "spleen_44",
+          "delta": 0.0097777003783889
+        },
+        "cases": 41,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 41,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "spleen_24",
+          "delta": -0.0024465254467783
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.0013365146996421329,
+          "q10": 0.00038536438686054275,
+          "q25": 5.563801571684124e-05,
+          "q50": 0.00012185237032247276,
+          "q75": -5.777195881895292e-05,
+          "q90": -5.9536251683312e-05,
+          "q95": -2.7697503695245373e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.9554016226218153,
+            "q10": 0.9609750117483603,
+            "q25": 0.9698519591964311,
+            "q50": 0.9759204278315273,
+            "q75": 0.9781125984388422,
+            "q90": 0.9813374805598756,
+            "q95": 0.9838937694709837
+          },
+          "rankseg": {
+            "q05": 0.9540651079221731,
+            "q10": 0.9613603761352209,
+            "q25": 0.9699075972121479,
+            "q50": 0.9760422802018498,
+            "q75": 0.9780548264800233,
+            "q90": 0.9812779443081923,
+            "q95": 0.9838660719672885
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0003564004119598341,
+          "q10": -0.00026443772470297056,
+          "q25": -0.00010904205269290923,
+          "q50": -3.1541478423768865e-05,
+          "q75": 5.563801571684124e-05,
+          "q90": 0.00016720277353543533,
+          "q95": 0.0002974401493509582
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.0024465254467783693,
+          "q10": 0.0007141849493998986,
+          "q25": 0.0001048638512046729,
+          "q50": 0.0002324064889205335,
+          "q75": -0.00011064109029923497,
+          "q90": -0.00011474280127321546,
+          "q95": -5.365133808066247e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.9146114366171595,
+            "q10": 0.9248815212475173,
+            "q25": 0.9414685276107464,
+            "q50": 0.9529732399261034,
+            "q75": 0.9571627920498483,
+            "q90": 0.9633587786259542,
+            "q95": 0.9682981364642732
+          },
+          "rankseg": {
+            "q05": 0.9121649111703811,
+            "q10": 0.9255957061969172,
+            "q25": 0.9415733914619511,
+            "q50": 0.9532056464150239,
+            "q75": 0.9570521509595491,
+            "q90": 0.963244035824681,
+            "q95": 0.9682444851261925
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0006827543637806244,
+          "q10": -0.0005053401539228952,
+          "q25": -0.0002078939168940197,
+          "q50": -6.065602905991341e-05,
+          "q75": 0.0001048638512046729,
+          "q90": 0.00032107343186993376,
+          "q95": 0.0005568194617417976
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 6.613371343267005e-05,
+      "foreground_mean_iou": 0.00010952089041338375
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9723658986805566,
+        "foreground_mean_iou": 0.9464165646194491
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.9724320323939892,
+        "foreground_mean_iou": 0.9465260855098625
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.00013385253179322432,
+        "median": 5.374194638296803e-05,
+        "samples": 10000,
+        "seed": 20260717,
+        "upper": 0.0003832076943725116
+      },
+      "iou": {
+        "lower": -0.000254363528511381,
+        "median": 8.934531514481758e-05,
+        "samples": 10000,
+        "seed": 20260718,
+        "upper": 0.0006713448460353072
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 41,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 956825600
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task009_Spleen/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      [
+        1
+      ]
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "3d_fullres=0.9661; 3d_cascade_fullres=0.9715",
+      "configuration_role": "primary; highest official validation average (0.9724) in archive summary.csv",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "410d4a301da4e5b2f6f86ec3ddba524e",
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task09_Spleen.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "model_configuration": "arithmetic mean of official 3d_fullres and 3d_cascade_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "3a7bef6d372b6fd9e1d7454a23bd793f",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task009_Spleen.zip/content",
+      "prospective_guard_status": "first unseen task after freezing the separate 2x volume safety track",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-27T05:39:03.936938+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 704643072,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.68858654590369,
+      "mean_postprocessing_milliseconds": 141.8809237344781,
+      "measurement_complete": false,
+      "median_milliseconds": 0.5465040449053049,
+      "median_postprocessing_milliseconds": 140.1925110258162
+    },
+    "rankseg": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 2334130688,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 10.610348144659728,
+      "mean_postprocessing_milliseconds": 142.67521928257605,
+      "measurement_complete": false,
+      "median_milliseconds": 9.431447018869221,
+      "median_postprocessing_milliseconds": 141.94912707898766
+    }
+  }
+}

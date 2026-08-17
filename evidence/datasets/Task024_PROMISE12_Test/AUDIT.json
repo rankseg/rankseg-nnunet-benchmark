@@ -1,0 +1,79 @@
+{
+  "ensemble_probability_audit": {
+    "cases": 30,
+    "definition": "float16((float32(2d) + float32(3d_fullres)) / 2)",
+    "elements": 310656128,
+    "max_absolute_error_vs_float16_mean": 0.0,
+    "max_absolute_error_vs_float32_mean": 0.000244140625,
+    "mismatched_elements_vs_float16_mean": 0
+  },
+  "expected_case_ids": "Case00--Case29",
+  "file_set_counts": {
+    "2d_npz": 30,
+    "3d_npz": 30,
+    "ensemble_npz": 30,
+    "ensemble_postprocessed_nii": 30,
+    "ensemble_raw_nii": 30,
+    "labels": 30
+  },
+  "metric_audits": {
+    "2d": {
+      "cases": 30,
+      "max_tp_fp_fn_metric_recompute_error": 0.0,
+      "native_argmax_mismatch_voxels": 120,
+      "rankseg_minus_argmax": {
+        "dice": -0.00021242329934678672,
+        "iou": -0.00031728838085642863
+      },
+      "recomputed": {
+        "argmax": {
+          "mean_dice": 0.9101020383337777,
+          "mean_iou": 0.8363332005456839
+        },
+        "rankseg": {
+          "mean_dice": 0.9098896150344309,
+          "mean_iou": 0.8360159121648275
+        }
+      }
+    },
+    "2d_3d_ensemble": {
+      "cases": 30,
+      "max_tp_fp_fn_metric_recompute_error": 0.0,
+      "native_argmax_mismatch_voxels": 0,
+      "rankseg_minus_argmax": {
+        "dice": -0.0008216817844923785,
+        "iou": -0.001397025794225626
+      },
+      "recomputed": {
+        "argmax": {
+          "mean_dice": 0.9193566877339929,
+          "mean_iou": 0.8518857467254328
+        },
+        "rankseg": {
+          "mean_dice": 0.9185350059495005,
+          "mean_iou": 0.8504887209312072
+        }
+      }
+    },
+    "3d_fullres": {
+      "cases": 30,
+      "max_tp_fp_fn_metric_recompute_error": 0.0,
+      "native_argmax_mismatch_voxels": 71,
+      "rankseg_minus_argmax": {
+        "dice": -0.00024327495597920024,
+        "iou": -0.00038267090553079086
+      },
+      "recomputed": {
+        "argmax": {
+          "mean_dice": 0.9151930521681937,
+          "mean_iou": 0.844685335554947
+        },
+        "rankseg": {
+          "mean_dice": 0.9149497772122145,
+          "mean_iou": 0.8443026646494162
+        }
+      }
+    }
+  },
+  "status": "pass"
+}

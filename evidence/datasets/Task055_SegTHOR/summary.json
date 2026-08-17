@@ -1,0 +1,333 @@
+{
+  "dataset": {
+    "cases": 40,
+    "channel_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "SegTHOR (official 3D fullres + cascade ensemble OOF + official postprocessing)",
+    "foreground_labels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "id": "Task055_SegTHOR",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "esophagus",
+      "2": "heart",
+      "3": "trachea",
+      "4": "aorta"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.0007016658782958984,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "Patient_05",
+          "delta": 0.0020148101994352
+        },
+        "cases": 40,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 40,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "Patient_20",
+          "delta": -0.0062130668855354
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "Patient_05",
+          "delta": 0.0028225412382634
+        },
+        "cases": 40,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 40,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "Patient_20",
+          "delta": -0.0077673238657421
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.00583078891833555,
+          "q10": 0.0005268433581170351,
+          "q25": -2.030603335256842e-06,
+          "q50": 0.0002600320181284088,
+          "q75": -0.00014002439252502885,
+          "q90": -0.00025530631740977583,
+          "q95": -0.00016405031218058586
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8839666402754718,
+            "q10": 0.8927788762902156,
+            "q25": 0.9061416771921966,
+            "q50": 0.9200380549426952,
+            "q75": 0.927071182219978,
+            "q90": 0.934867829312773,
+            "q95": 0.9371528278086371
+          },
+          "rankseg": {
+            "q05": 0.8781358513571362,
+            "q10": 0.8933057196483326,
+            "q25": 0.9061396465888614,
+            "q50": 0.9202980869608236,
+            "q75": 0.926931157827453,
+            "q90": 0.9346125229953632,
+            "q95": 0.9369887774964565
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0009413252539584138,
+          "q10": -0.0004523553740647612,
+          "q25": -0.00021009589736978307,
+          "q50": 2.5820843173929298e-05,
+          "q75": 0.0004637395328366545,
+          "q90": 0.0008030828478109431,
+          "q95": 0.0010342155218836238
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.007326768878722856,
+          "q10": 0.0008181936382756216,
+          "q25": -6.9800257370356e-05,
+          "q50": -0.0002177259280428112,
+          "q75": 2.4653566928600767e-05,
+          "q90": -0.00043824331032393804,
+          "q95": -0.00026783528129092904
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8000008013233625,
+            "q10": 0.8080488473191854,
+            "q25": 0.831330122021159,
+            "q50": 0.854743273149308,
+            "q75": 0.8645081405482266,
+            "q90": 0.8787999276002889,
+            "q95": 0.8834674028612124
+          },
+          "rankseg": {
+            "q05": 0.7926740324446396,
+            "q10": 0.808867040957461,
+            "q25": 0.8312603217637886,
+            "q50": 0.8545255472212652,
+            "q75": 0.8645327941151552,
+            "q90": 0.878361684289965,
+            "q95": 0.8831995675799215
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0015555599425066068,
+          "q10": -0.0006995320782188785,
+          "q25": -0.00033157814439446764,
+          "q50": 3.750143915676185e-05,
+          "q75": 0.00070941406134159,
+          "q90": 0.0010895550920601354,
+          "q95": 0.001409088285451053
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": -1.877567344932274e-05,
+      "foreground_mean_iou": -1.1507133452770546e-05
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9151998555336264,
+        "foreground_mean_iou": 0.847321895299272
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.915181079860177,
+        "foreground_mean_iou": 0.8473103881658193
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.0004117370459272379,
+        "median": 3.887949815095659e-06,
+        "samples": 10000,
+        "seed": 20260802,
+        "upper": 0.0002730087265339104
+      },
+      "iou": {
+        "lower": -0.0005287354417233076,
+        "median": 7.257221439571637e-06,
+        "samples": 10000,
+        "seed": 20260803,
+        "upper": 0.0003931832448121036
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 40,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 1945108480
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task055_SegTHOR/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      2,
+      3,
+      4
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "3d_fullres=0.9133; 3d_cascade_fullres=0.9141",
+      "configuration_role": "primary; highest official validation average (0.9150) in archive summary.csv",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "confirmation_cohort_status": "fifth dataset in the prospective confirmation order locked on 2026-07-28",
+      "dataset_scope": "official 40-patient labeled training archive",
+      "dataset_size_bytes": 1820142473,
+      "dataset_url": "https://codalab.lisn.upsaclay.fr/my/datasets/download/3d24ba7b-42fd-469e-b5f5-dfcd3a0ac2f5",
+      "evaluation_design": "five-fold out-of-fold; every patient predicted by the one fold that did not train on it",
+      "model_configuration": "arithmetic mean of official 3d_fullres and 3d_cascade_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "ae464374487596ab54f9d24bfd14b767",
+      "model_mirror": "https://zenodo.org/api/records/3734294/files/Task055_SegTHOR.zip/content",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content",
+      "official_ensemble_validation_average": 0.915,
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-29T05:28:42.453527+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 40
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 2084569088,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 1.9063310406636447,
+      "mean_postprocessing_milliseconds": 790.0207994680386,
+      "measurement_complete": true,
+      "median_milliseconds": 1.6604349948465824,
+      "median_postprocessing_milliseconds": 724.4209820637479
+    },
+    "rankseg": {
+      "device_counts": {
+        "cuda": 40
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 16453209088,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 214.53203630517237,
+      "mean_postprocessing_milliseconds": 786.8195000570267,
+      "measurement_complete": true,
+      "median_milliseconds": 191.47081905975938,
+      "median_postprocessing_milliseconds": 724.285677424632
+    }
+  }
+}

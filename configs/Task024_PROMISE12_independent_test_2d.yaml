@@ -1,0 +1,53 @@
+dataset:
+  id: Task024_PROMISE12_Test_2d
+  display_name: PROMISE12 former hidden test (official nnU-Net v1, 2D five-fold model average)
+  labels:
+    0: background
+    1: prostate
+  channel_labels: [0, 1]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/independent_test/Task024_Promise/predictions_2d
+  labels_dir: ../work/v1/independent_test/Task024_Promise/converted/labels
+  probability_glob: "*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/independent_test/Task024_Promise/predictions_2d
+  native_predictions_postprocessed: true
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260814
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/2d/Task024_Promise/nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task024_PROMISE12_independent_test_2d_sensitivity
+
+provenance:
+  evaluation_design: independent test; 30 former hidden PROMISE12 challenge test cases with masks released after model training
+  training_cohort: official nnU-Net models were trained on the separate 50-case PROMISE12 training set
+  test_cohort: Case00--Case29 from the official Zenodo test_data.zip
+  model_configuration: official 2d probabilities averaging folds 0--4; model_final_checkpoint
+  configuration_role: sensitivity analysis; not an additional dataset in the cross-dataset aggregate
+  configuration_selected_before_rankseg_evaluation: true
+  official_validation_average: 0.8936430654340525
+  test_time_augmentation: nnU-Net default mirroring enabled
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  model_md5: c8dfacef77d4390786572194aa506595
+  dataset_doi: https://doi.org/10.5281/zenodo.8026660
+  dataset_md5: 823ef560f4a54083348e58d67403e4bb
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

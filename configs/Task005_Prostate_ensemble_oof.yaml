@@ -1,0 +1,54 @@
+dataset:
+  id: Task005_Prostate_raw_sensitivity
+  display_name: MSD Prostate (official 2D + 3D ensemble OOF, raw decoder sensitivity)
+  labels:
+    0: background
+    1: peripheral zone
+    2: transition zone
+  channel_labels: [0, 1, 2]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task005_Prostate_ensemble/fold_predictions
+  labels_dir: ../work/v1/release_labels/Task005_Prostate
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task005_Prostate_ensemble/fold_predictions
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260717
+
+outputs:
+  dir: ../outputs/Task005_Prostate_ensemble_raw_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; every case predicted by the one fold that did not train on it
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  model_configuration: arithmetic mean of official 2d and 3d_fullres OOF probabilities
+  configuration_role: sensitivity only; decoder outputs before the official connected-component postprocessing
+  configuration_selected_before_rankseg_evaluation: false
+  component_official_validation_averages: 2d=0.7341; 3d_fullres=0.7544
+  ensemble_command: fold-matched nnUNet_ensemble --npz without postprocessing
+  model_url: https://zenodo.org/api/records/4003545/files/Task005_Prostate.zip/content
+  model_md5: 364cd721162977d7e7e37d59f41c0dc4
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://msd-for-monai.s3-us-west-2.amazonaws.com/Task05_Prostate.tar
+  dataset_md5: 35138f08b1efaef89d7424d2bcc928db
+  dataset_license: CC-BY-SA-4.0
+  label_correction_manifest: ../work/v1/release_labels/Task005_Prostate/corrections.json
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

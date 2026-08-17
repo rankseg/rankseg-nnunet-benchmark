@@ -1,0 +1,65 @@
+dataset:
+  id: Task038_CHAOS
+  display_name: CHAOS MRI (official nnU-Net v1, 2D + 3D fullres ensemble OOF; patient-clustered)
+  labels:
+    0: background
+    1: liver
+    2: right kidney
+    3: left kidney
+    4: spleen
+  channel_labels: [0, 1, 2, 3, 4]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task038_CHAOS_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task038_CHAOS_Task_3_5_Variant2/labelsTr
+  probability_glob: "fold_*/not_postprocessed/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task038_CHAOS_ensemble/fold_predictions
+  native_predictions_postprocessed: false
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2, 3, 4]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260814
+  cluster_regex: "^(?:T1_in_|T1_out_|T2_)([0-9]+)$"
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task038_CHAOS_Task_3_5_Variant2/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task038_CHAOS_ensemble_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; T1 in-phase, T1 out-phase, and T2 observations of each patient remain in the same fold
+  split: exact nnU-Net v1 Task038 conversion protocol; patient-level deterministic five-fold split with random_state=12345
+  uncertainty: primary paired case bootstrap plus patient-clustered paired bootstrap over 20 patients
+  model_configuration: arithmetic mean of official 2d and 3d_fullres OOF probabilities
+  configuration_role: extended primary; highest official validation average (0.9197) selected before RankSEG evaluation
+  configuration_selected_before_rankseg_evaluation: true
+  component_official_validation_averages: 2d=0.9013; 3d_fullres=0.9196
+  official_ensemble_validation_average: 0.9197
+  test_time_augmentation: nnU-Net default mirroring enabled for both component predictions
+  model_url: https://zenodo.org/api/records/4003545/files/Task038_CHAOS_Task_3_5_Variant2.zip/content
+  model_size_bytes: 2774011680
+  model_md5: 57bc8bc3c80a5dc08917aafd517407b4
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://zenodo.org/api/records/3431873/files/CHAOS_Train_Sets.zip/content
+  dataset_size_bytes: 890771694
+  dataset_md5: df21053002a1cc86df918a87da3b2c19
+  dataset_doi: https://doi.org/10.5281/zenodo.3431873
+  dataset_license: CC-BY-NC-SA-4.0
+  dataset_scope: official labeled MRI training cohort; 20 patients, each represented by T1 in-phase, T1 out-phase, and T2-SPIR
+  oof_assignment_sha256: 38796d20ba82429888222481c5d68bd9a359e67ac2f5f178599088565273e71e
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

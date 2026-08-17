@@ -1,0 +1,320 @@
+{
+  "dataset": {
+    "cases": 32,
+    "channel_labels": [
+      0,
+      1,
+      2
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Prostate (official nnU-Net v1, 2D + 3D ensemble OOF + official postprocessing)",
+    "foreground_labels": [
+      1,
+      2
+    ],
+    "id": "Task005_Prostate",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "peripheral zone",
+      "2": "transition zone"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 17,
+    "max_probability_normalization_error": 0.0006425380706787109,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "prostate_21",
+          "delta": 0.167847205404981
+        },
+        "cases": 32,
+        "improved_over_1pp": 8,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 20,
+        "thresholds": {
+          "10_pp": {
+            "negative": 1,
+            "negative_fraction": 0.03125,
+            "positive": 1,
+            "positive_fraction": 0.03125
+          },
+          "1_pp": {
+            "negative": 4,
+            "negative_fraction": 0.125,
+            "positive": 8,
+            "positive_fraction": 0.25
+          },
+          "5_pp": {
+            "negative": 1,
+            "negative_fraction": 0.03125,
+            "positive": 2,
+            "positive_fraction": 0.0625
+          }
+        },
+        "worsened_over_1pp": 4,
+        "worst": {
+          "case_id": "prostate_07",
+          "delta": -0.3261897869664033
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "prostate_21",
+          "delta": 0.2135800158887772
+        },
+        "cases": 32,
+        "improved_over_1pp": 12,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 15,
+        "thresholds": {
+          "10_pp": {
+            "negative": 1,
+            "negative_fraction": 0.03125,
+            "positive": 1,
+            "positive_fraction": 0.03125
+          },
+          "1_pp": {
+            "negative": 5,
+            "negative_fraction": 0.15625,
+            "positive": 12,
+            "positive_fraction": 0.375
+          },
+          "5_pp": {
+            "negative": 1,
+            "negative_fraction": 0.03125,
+            "positive": 2,
+            "positive_fraction": 0.0625
+          }
+        },
+        "worsened_over_1pp": 5,
+        "worst": {
+          "case_id": "prostate_07",
+          "delta": -0.2426376721322722
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.1668627148492165,
+          "q10": 0.004932299031769061,
+          "q25": 0.019706238078743832,
+          "q50": 0.017614675770514787,
+          "q75": 0.013876702445052458,
+          "q90": 0.004264018264499625,
+          "q95": 0.006859850377027743
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.5662502796898594,
+            "q10": 0.6737384565956893,
+            "q25": 0.7226741529856824,
+            "q50": 0.7872475377996746,
+            "q75": 0.8331852044208273,
+            "q90": 0.8571015098977107,
+            "q95": 0.860072702223111
+          },
+          "rankseg": {
+            "q05": 0.3993875648406429,
+            "q10": 0.6786707556274584,
+            "q25": 0.7423803910644262,
+            "q50": 0.8048622135701894,
+            "q75": 0.8470619068658798,
+            "q90": 0.8613655281622103,
+            "q95": 0.8669325526001388
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.012524843233829946,
+          "q10": -0.009956868725795886,
+          "q25": -0.0036320243013161224,
+          "q50": 0.0041711432592420605,
+          "q75": 0.011037490857635737,
+          "q90": 0.02102863894436389,
+          "q95": 0.03991571458591954
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.11644240867270955,
+          "q10": 0.003552129086876521,
+          "q25": 0.013274839686239104,
+          "q50": 0.016041133909066696,
+          "q75": 0.019808815885153486,
+          "q90": 0.0019386001919721174,
+          "q95": 0.010339525181830456
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.4586929356185515,
+            "q10": 0.5144783713247331,
+            "q25": 0.5842600222437003,
+            "q50": 0.6627620849452001,
+            "q75": 0.7173070327926132,
+            "q90": 0.7546832541794681,
+            "q95": 0.7574041844082214
+          },
+          "rankseg": {
+            "q05": 0.34225052694584196,
+            "q10": 0.5180305004116096,
+            "q25": 0.5975348619299394,
+            "q50": 0.6788032188542668,
+            "q75": 0.7371158486777667,
+            "q90": 0.7566218543714403,
+            "q95": 0.7677437095900519
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.016733738018896188,
+          "q10": -0.013905790575832588,
+          "q25": -0.004998230948852711,
+          "q50": 0.00411333077235293,
+          "q75": 0.013072561566516074,
+          "q90": 0.02588573749977275,
+          "q95": 0.05508235668453053
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 0.00022948002375178245,
+      "foreground_mean_iou": 0.005437802113599122
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.7595709141302581,
+        "foreground_mean_iou": 0.6390055866058668
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.7598003941540099,
+        "foreground_mean_iou": 0.6444433887194659
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.02584377661910743,
+        "median": 0.0015809063811026425,
+        "samples": 10000,
+        "seed": 20260717,
+        "upper": 0.019902621848950187
+      },
+      "iou": {
+        "lower": -0.01654790923834191,
+        "median": 0.005425611124545704,
+        "samples": 10000,
+        "seed": 20260718,
+        "upper": 0.0252719207067279
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 32,
+    "max_case_mismatch_voxels": 618,
+    "mismatch_fraction": 4.8622351226889616e-05,
+    "mismatch_voxels": 2930,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 60260352
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task005_Prostate/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      2
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "2d=0.7341; 3d_fullres=0.7544",
+      "configuration_role": "primary; official best configuration and its prelearned postprocessing",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "35138f08b1efaef89d7424d2bcc928db",
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task05_Prostate.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "label_correction_manifest": "../work/v1/release_labels/Task005_Prostate/corrections.json",
+      "model_configuration": "arithmetic mean of official 2d and 3d_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "364cd721162977d7e7e37d59f41c0dc4",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task005_Prostate.zip/content",
+      "official_release_raw_summary_sha256": "5960ef0999a561b74dc7f58b2aed0820ce8fe1609caf23a40ce2a336c4876d46",
+      "official_validation_average": 0.7592,
+      "postprocessing_selection": "class 2 largest connected component; learned by official release before this benchmark",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-27T02:59:26.986291+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 49152000,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.29791796987410635,
+      "mean_postprocessing_milliseconds": 11.16806862410158,
+      "measurement_complete": false,
+      "median_milliseconds": 0.10640098480507731,
+      "median_postprocessing_milliseconds": 9.751375997439027
+    },
+    "rankseg": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 338463744,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 9.350216183520388,
+      "mean_postprocessing_milliseconds": 9.737688036693726,
+      "measurement_complete": false,
+      "median_milliseconds": 7.688387064263225,
+      "median_postprocessing_milliseconds": 9.169542987365276
+    }
+  }
+}

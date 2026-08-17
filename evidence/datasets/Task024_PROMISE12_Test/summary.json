@@ -1,0 +1,326 @@
+{
+  "dataset": {
+    "cases": 30,
+    "channel_labels": [
+      0,
+      1
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "PROMISE12 former hidden test (official nnU-Net v1, 2D + 3D fullres ensemble)",
+    "foreground_labels": [
+      1
+    ],
+    "id": "Task024_PROMISE12_Test",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "prostate"
+    },
+    "metric_semantics": "exclusive labels",
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 23,
+    "max_probability_normalization_error": 0.00048828125,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "Case27",
+          "delta": 0.0085051223101405
+        },
+        "cases": 30,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 29,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 1,
+            "negative_fraction": 0.03333333333333333,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 1,
+        "worst": {
+          "case_id": "Case08",
+          "delta": -0.0164053802777324
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "Case27",
+          "delta": 0.0132920559303467
+        },
+        "cases": 30,
+        "improved_over_1pp": 1,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 26,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 3,
+            "negative_fraction": 0.1,
+            "positive": 1,
+            "positive_fraction": 0.03333333333333333
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 3,
+        "worst": {
+          "case_id": "Case08",
+          "delta": -0.0270066532319696
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.005266202255691965,
+          "q10": 0.0010364521510459745,
+          "q25": -0.005691260420785604,
+          "q50": 0.0001990899999100293,
+          "q75": -0.00064327297069533,
+          "q90": -0.0010143291994478831,
+          "q95": -0.0005675051269422582
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8725580387000704,
+            "q10": 0.883521484871769,
+            "q25": 0.9040513181926362,
+            "q50": 0.9269879366382252,
+            "q75": 0.9422979543495731,
+            "q90": 0.9456766843704353,
+            "q95": 0.9495321922921338
+          },
+          "rankseg": {
+            "q05": 0.8778242409557624,
+            "q10": 0.8845579370228149,
+            "q25": 0.8983600577718506,
+            "q50": 0.9271870266381352,
+            "q75": 0.9416546813788778,
+            "q90": 0.9446623551709874,
+            "q95": 0.9489646871651916
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0070292864085712775,
+          "q10": -0.003143032044209891,
+          "q25": -0.0012051709401790234,
+          "q50": -0.00025435684804625547,
+          "q75": 0.0006460213563345418,
+          "q90": 0.0016308718966673305,
+          "q95": 0.0036773833109249956
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.008253918028587437,
+          "q10": 0.001664409507451392,
+          "q25": -0.009421069532381532,
+          "q50": 0.0003458456450654568,
+          "q75": -0.0011482361593609935,
+          "q90": -0.0018243490694996867,
+          "q95": -0.0010209829110578994
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.7740385051082326,
+            "q10": 0.7913468001244676,
+            "q25": 0.8249047761832766,
+            "q50": 0.8639120161656634,
+            "q75": 0.8908930308011547,
+            "q90": 0.8969531395912125,
+            "q95": 0.9039144618199193
+          },
+          "rankseg": {
+            "q05": 0.78229242313682,
+            "q10": 0.793011209631919,
+            "q25": 0.8154837066508951,
+            "q50": 0.8642578618107288,
+            "q75": 0.8897447946417937,
+            "q90": 0.8951287905217128,
+            "q95": 0.9028934789088614
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.01233626669186344,
+          "q10": -0.004958369099749502,
+          "q25": -0.0021088942738684835,
+          "q50": -0.0004532518324347201,
+          "q75": 0.0011249873224036255,
+          "q90": 0.0028254766419066224,
+          "q95": 0.006246582239037143
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": -0.0008216817844923785,
+      "foreground_mean_iou": -0.001397025794225737
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9193566877339929,
+        "foreground_mean_iou": 0.8518857467254328
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.9185350059495005,
+        "foreground_mean_iou": 0.8504887209312071
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.0023956028566357117,
+        "median": -0.0007668237014812895,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.0005090347263179888
+      },
+      "iou": {
+        "lower": -0.0039278189981826,
+        "median": -0.001324613484668835,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.0008051408266831167
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 30,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "native_masks_postprocessed": false,
+    "note": "Compared before official postprocessing; native masks were produced before float16 npz storage.",
+    "valid_voxels": 155529216
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task024_Promise/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      [
+        1
+      ]
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "configuration_role": "extended primary; highest official validation average (0.9030) in archive summary.csv",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_doi": "https://doi.org/10.5281/zenodo.8026660",
+      "dataset_license": "research use; official LICENSE.TXT mandates citation of https://doi.org/10.1016/j.media.2013.12.002",
+      "dataset_md5": "823ef560f4a54083348e58d67403e4bb",
+      "dataset_size_bytes": 194659961,
+      "dataset_url": "https://zenodo.org/api/records/8026660/files/test_data.zip/content",
+      "evaluation_design": "independent test; 30 former hidden PROMISE12 challenge test cases with masks released after model training",
+      "model_configuration": "arithmetic mean of official 2d and 3d_fullres probabilities; each component averages folds 0--4; model_final_checkpoint",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "c8dfacef77d4390786572194aa506595",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task024_Promise.zip/content",
+      "official_validation_average": 0.903,
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "test_cohort": "Case00--Case29 from the official Zenodo test_data.zip; overlapping case names are challenge-local identifiers, not overlapping images or patients",
+      "test_time_augmentation": "nnU-Net default mirroring enabled for both component predictions",
+      "training_cohort": "official nnU-Net models were trained on the separate 50-case PROMISE12 training set"
+    },
+    "runtime": {
+      "created_at_utc": "2026-08-14T10:37:56.224466+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 30
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 218103808,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.3859214358575021,
+      "mean_postprocessing_milliseconds": 29.805677267722785,
+      "measurement_complete": true,
+      "median_milliseconds": 0.17562450375407934,
+      "median_postprocessing_milliseconds": 23.14047300023958
+    },
+    "rankseg": {
+      "device_counts": {
+        "cuda": 30
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 722469376,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 4.502481670351699,
+      "mean_postprocessing_milliseconds": 30.104925470853534,
+      "measurement_complete": true,
+      "median_milliseconds": 2.584969493909739,
+      "median_postprocessing_milliseconds": 20.950036006979644
+    }
+  }
+}

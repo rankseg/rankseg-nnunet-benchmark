@@ -1,0 +1,316 @@
+{
+  "dataset": {
+    "cases": 260,
+    "channel_labels": [
+      0,
+      1,
+      2
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Hippocampus (official nnU-Net v1, 3d_fullres OOF)",
+    "foreground_labels": [
+      1,
+      2
+    ],
+    "id": "Task004_Hippocampus",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "Anterior",
+      "2": "Posterior"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.0003662109375,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "hippocampus_280",
+          "delta": 0.002103627548376
+        },
+        "cases": 260,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 260,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "hippocampus_375",
+          "delta": -0.0017322288954528
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "hippocampus_280",
+          "delta": 0.0030363471389625
+        },
+        "cases": 260,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 260,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "hippocampus_125",
+          "delta": -0.0027681768316665
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.000369651412893357,
+          "q10": 3.829385825182552e-05,
+          "q25": 0.00033276571619011985,
+          "q50": -5.818240511712425e-06,
+          "q75": 0.0001387455382041436,
+          "q90": 0.0002779729067504677,
+          "q95": 0.00018900297034252223
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.826886131659529,
+            "q10": 0.8407724728548844,
+            "q25": 0.8662111066605221,
+            "q50": 0.8957132939039043,
+            "q75": 0.9159938349316099,
+            "q90": 0.9280430740067067,
+            "q95": 0.936738044550332
+          },
+          "rankseg": {
+            "q05": 0.8265164802466356,
+            "q10": 0.8408107667131363,
+            "q25": 0.8665438723767123,
+            "q50": 0.8957074756633926,
+            "q75": 0.916132580469814,
+            "q90": 0.9283210469134572,
+            "q95": 0.9369270475206746
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0007522361650990794,
+          "q10": -0.0006206498495812007,
+          "q25": -0.000307218240809648,
+          "q50": 4.6670272234150545e-05,
+          "q75": 0.00037170721499255044,
+          "q90": 0.0007126716255051013,
+          "q95": 0.0009464075283430678
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.0005305141888312104,
+          "q10": 5.6369297864677925e-05,
+          "q25": 0.0004178700277641667,
+          "q50": 1.3967255217184338e-05,
+          "q75": 0.00023392255748400093,
+          "q90": 0.0005039623572989926,
+          "q95": 0.0003363471497680459
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.7048679374706012,
+            "q10": 0.7253137446800783,
+            "q25": 0.7643075196565053,
+            "q50": 0.8111326405278103,
+            "q75": 0.8452937605282235,
+            "q90": 0.8658010084653135,
+            "q95": 0.8810308252862129
+          },
+          "rankseg": {
+            "q05": 0.70433742328177,
+            "q10": 0.7253701139779429,
+            "q25": 0.7647253896842695,
+            "q50": 0.8111466077830275,
+            "q75": 0.8455276830857075,
+            "q90": 0.8663049708226125,
+            "q95": 0.881367172435981
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0012483782443570067,
+          "q10": -0.0010443504632393409,
+          "q25": -0.0004876495994988461,
+          "q50": 7.813192873218355e-05,
+          "q75": 0.0006212182693029755,
+          "q90": 0.0011052625825633377,
+          "q95": 0.0015699043545257974
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 4.05255796931403e-05,
+      "foreground_mean_iou": 6.69411254012875e-05
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.8890847218712203,
+        "foreground_mean_iou": 0.8022832969439952
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.8891252474509135,
+        "foreground_mean_iou": 0.8023502380693965
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -2.5254334368074446e-05,
+        "median": 4.043119330443545e-05,
+        "samples": 10000,
+        "seed": 20260717,
+        "upper": 0.00010831232034591852
+      },
+      "iou": {
+        "lower": -3.9834825706908106e-05,
+        "median": 6.657404313042958e-05,
+        "samples": 10000,
+        "seed": 20260718,
+        "upper": 0.00017622181478546545
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 260,
+    "max_case_mismatch_voxels": 1,
+    "mismatch_fraction": 1.0412675141195875e-06,
+    "mismatch_voxels": 17,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 16326256
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/3d_fullres/Task004_Hippocampus/nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      1
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "configuration_role": "primary; highest official validation average (0.8891) in archive summary.csv",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "9d24dba78a72977dbd1d2e110310f31b",
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task04_Hippocampus.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "model_configuration": "3d_fullres, nnUNetTrainerV2, nnUNetPlansv2.1, model_final_checkpoint",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "44dad55102901e203f5cda68084f0c5c",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task004_Hippocampus.zip/content",
+      "postprocessing_selection": "class 1 largest connected component; learned by official release",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-27T03:03:45.185694+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 1850368,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.05508841937766052,
+      "mean_postprocessing_milliseconds": 0.39084134578633195,
+      "measurement_complete": false,
+      "median_milliseconds": 0.026356487069278955,
+      "median_postprocessing_milliseconds": 0.38665049942210317
+    },
+    "rankseg": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 13422080,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 1.1207279650709376,
+      "mean_postprocessing_milliseconds": 0.34971875317681295,
+      "measurement_complete": false,
+      "median_milliseconds": 0.8086119778454304,
+      "median_postprocessing_milliseconds": 0.3501969622448087
+    }
+  }
+}

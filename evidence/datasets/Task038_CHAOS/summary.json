@@ -1,0 +1,357 @@
+{
+  "dataset": {
+    "cases": 60,
+    "channel_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "cluster_regex": "^(?:T1_in_|T1_out_|T2_)([0-9]+)$",
+    "clusters": 20,
+    "display_name": "CHAOS MRI (official nnU-Net v1, 2D + 3D fullres ensemble OOF; patient-clustered)",
+    "foreground_labels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "id": "Task038_CHAOS",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "liver",
+      "2": "right kidney",
+      "3": "left kidney",
+      "4": "spleen"
+    },
+    "metric_semantics": "exclusive labels",
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 60,
+    "max_probability_normalization_error": 0.0006939172744750977,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "T1_in_36",
+          "delta": 0.0553446836490113
+        },
+        "cases": 60,
+        "improved_over_1pp": 7,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 52,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 1,
+            "negative_fraction": 0.016666666666666666,
+            "positive": 7,
+            "positive_fraction": 0.11666666666666667
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 1,
+            "positive_fraction": 0.016666666666666666
+          }
+        },
+        "worsened_over_1pp": 1,
+        "worst": {
+          "case_id": "T1_out_1",
+          "delta": -0.0285270726094006
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "T1_in_36",
+          "delta": 0.0738101302396948
+        },
+        "cases": 60,
+        "improved_over_1pp": 7,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 50,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 3,
+            "negative_fraction": 0.05,
+            "positive": 7,
+            "positive_fraction": 0.11666666666666667
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 1,
+            "positive_fraction": 0.016666666666666666
+          }
+        },
+        "worsened_over_1pp": 3,
+        "worst": {
+          "case_id": "T1_out_1",
+          "delta": -0.0491842990258086
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.0005925731381041244,
+          "q10": -0.0008549851478187875,
+          "q25": 0.005473394058894465,
+          "q50": 0.0002318618692849217,
+          "q75": -0.0005911330549072114,
+          "q90": -0.001804763126765141,
+          "q95": 0.00045629421972526174
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.873000259942519,
+            "q10": 0.896780460209071,
+            "q25": 0.9164044265627902,
+            "q50": 0.93471778867142,
+            "q75": 0.9439795066129653,
+            "q90": 0.9560158356767082,
+            "q95": 0.9567804417551771
+          },
+          "rankseg": {
+            "q05": 0.8735928330806231,
+            "q10": 0.8959254750612522,
+            "q25": 0.9218778206216847,
+            "q50": 0.9349496505407049,
+            "q75": 0.943388373558058,
+            "q90": 0.9542110725499431,
+            "q95": 0.9572367359749023
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.005073109151335375,
+          "q10": -0.0030367865185302544,
+          "q25": -0.0009617110741413637,
+          "q50": 0.0002698460437528527,
+          "q75": 0.0013127034012345995,
+          "q90": 0.011168655306817056,
+          "q95": 0.016988348628684577
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.0016731551963472535,
+          "q10": -0.0018189065041290808,
+          "q25": 0.006111064451708281,
+          "q50": 0.0005645802177230985,
+          "q75": -0.0007825182332596992,
+          "q90": -0.0033136211364773738,
+          "q95": 0.0007547547355806206
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.7842971345707763,
+            "q10": 0.814750810774394,
+            "q25": 0.8496854744012516,
+            "q50": 0.8779973066709775,
+            "q75": 0.8941735192828721,
+            "q90": 0.9158505496739625,
+            "q95": 0.917273478890151
+          },
+          "rankseg": {
+            "q05": 0.7826239793744291,
+            "q10": 0.812931904270265,
+            "q25": 0.8557965388529599,
+            "q50": 0.8785618868887006,
+            "q75": 0.8933910010496124,
+            "q90": 0.9125369285374851,
+            "q95": 0.9180282336257316
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.008941725032227992,
+          "q10": -0.005456088488059063,
+          "q25": -0.001755698166642089,
+          "q50": 0.00037468187542782916,
+          "q75": 0.002336718271905791,
+          "q90": 0.019118821811374465,
+          "q95": 0.02742807962298499
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 0.0017600960046940672,
+      "foreground_mean_iou": 0.0025459560207532483
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9204389057297057,
+        "foreground_mean_iou": 0.8612341347460786
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.9221990017343997,
+        "foreground_mean_iou": 0.8637800907668318
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.000413494114161711,
+        "median": 0.0017018165733569957,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.004324111024283051
+      },
+      "iou": {
+        "lower": -0.0008350913732985688,
+        "median": 0.002457214618915071,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.0064996056631493266
+      }
+    },
+    "paired_cluster_bootstrap_delta": {
+      "dice": {
+        "clusters": 20,
+        "lower": -0.000968185459906118,
+        "median": 0.0016612023955585031,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.004811702290279555
+      },
+      "iou": {
+        "clusters": 20,
+        "lower": -0.001587541162995723,
+        "median": 0.0024534598725567958,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.007078566382828454
+      }
+    }
+  },
+  "native_argmax_check": {
+    "cases": 60,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "native_masks_postprocessed": false,
+    "note": "Compared before official postprocessing; native masks were produced before float16 npz storage.",
+    "valid_voxels": 140058624
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task038_CHAOS_Task_3_5_Variant2/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "2d=0.9013; 3d_fullres=0.9196",
+      "configuration_role": "extended primary; highest official validation average (0.9197) selected before RankSEG evaluation",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_doi": "https://doi.org/10.5281/zenodo.3431873",
+      "dataset_license": "CC-BY-NC-SA-4.0",
+      "dataset_md5": "df21053002a1cc86df918a87da3b2c19",
+      "dataset_scope": "official labeled MRI training cohort; 20 patients, each represented by T1 in-phase, T1 out-phase, and T2-SPIR",
+      "dataset_size_bytes": 890771694,
+      "dataset_url": "https://zenodo.org/api/records/3431873/files/CHAOS_Train_Sets.zip/content",
+      "evaluation_design": "five-fold out-of-fold; T1 in-phase, T1 out-phase, and T2 observations of each patient remain in the same fold",
+      "model_configuration": "arithmetic mean of official 2d and 3d_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "57bc8bc3c80a5dc08917aafd517407b4",
+      "model_size_bytes": 2774011680,
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task038_CHAOS_Task_3_5_Variant2.zip/content",
+      "official_ensemble_validation_average": 0.9197,
+      "oof_assignment_sha256": "38796d20ba82429888222481c5d68bd9a359e67ac2f5f178599088565273e71e",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "exact nnU-Net v1 Task038 conversion protocol; patient-level deterministic five-fold split with random_state=12345",
+      "test_time_augmentation": "nnU-Net default mirroring enabled for both component predictions",
+      "uncertainty": "primary paired case bootstrap plus patient-clustered paired bootstrap over 20 patients"
+    },
+    "runtime": {
+      "created_at_utc": "2026-08-14T15:57:37.148591+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 60
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 97484800,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.26601053153475124,
+      "mean_postprocessing_milliseconds": 41.53836108453106,
+      "measurement_complete": true,
+      "median_milliseconds": 0.1378034648951143,
+      "median_postprocessing_milliseconds": 38.619183033006266
+    },
+    "rankseg": {
+      "device_counts": {
+        "cuda": 60
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 741581312,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 12.073146415059455,
+      "mean_postprocessing_milliseconds": 40.29899271457301,
+      "measurement_complete": true,
+      "median_milliseconds": 10.724963009124622,
+      "median_postprocessing_milliseconds": 37.61586398468353
+    }
+  }
+}

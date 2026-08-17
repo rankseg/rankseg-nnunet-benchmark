@@ -1,0 +1,38 @@
+dataset:
+  id: Task004_Hippocampus_ensemble
+  display_name: MSD Hippocampus (official nnU-Net v1, 2D + 3D ensemble OOF)
+  labels: {0: background, 1: Anterior, 2: Posterior}
+  channel_labels: [0, 1, 2]
+  ignore_label: null
+inputs:
+  probabilities_dir: ../work/v1/oof/Task004_Hippocampus_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task004_Hippocampus/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task004_Hippocampus_ensemble/fold_predictions
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+runtime: {device: cuda}
+evaluation:
+  foreground_labels: [1, 2]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260717
+outputs: {dir: ../outputs/Task004_Hippocampus_ensemble_oof}
+provenance:
+  evaluation_design: five-fold out-of-fold
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  model_configuration: arithmetic mean of exported 2D and 3d_fullres probabilities
+  configuration_role: sensitivity only; official validation average 0.8876 versus selected 0.8891
+  configuration_selected_before_rankseg_evaluation: false
+  ensemble_command: nnUNet_ensemble --npz
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  model_md5: 44dad55102901e203f5cda68084f0c5c
+  dataset_md5: 9d24dba78a72977dbd1d2e110310f31b
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

@@ -1,0 +1,57 @@
+dataset:
+  id: Task024_PROMISE12_Test
+  display_name: PROMISE12 former hidden test (official nnU-Net v1, 2D + 3D fullres ensemble)
+  labels:
+    0: background
+    1: prostate
+  channel_labels: [0, 1]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/independent_test/Task024_Promise/predictions_ensemble
+  labels_dir: ../work/v1/independent_test/Task024_Promise/converted/labels
+  probability_glob: "not_postprocessed/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/independent_test/Task024_Promise/predictions_ensemble
+  native_predictions_postprocessed: false
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260814
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task024_Promise/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task024_PROMISE12_independent_test
+
+provenance:
+  evaluation_design: independent test; 30 former hidden PROMISE12 challenge test cases with masks released after model training
+  training_cohort: official nnU-Net models were trained on the separate 50-case PROMISE12 training set
+  test_cohort: Case00--Case29 from the official Zenodo test_data.zip; overlapping case names are challenge-local identifiers, not overlapping images or patients
+  model_configuration: arithmetic mean of official 2d and 3d_fullres probabilities; each component averages folds 0--4; model_final_checkpoint
+  configuration_role: extended primary; highest official validation average (0.9030) in archive summary.csv
+  configuration_selected_before_rankseg_evaluation: true
+  official_validation_average: 0.9030
+  test_time_augmentation: nnU-Net default mirroring enabled for both component predictions
+  model_url: https://zenodo.org/api/records/4003545/files/Task024_Promise.zip/content
+  model_md5: c8dfacef77d4390786572194aa506595
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://zenodo.org/api/records/8026660/files/test_data.zip/content
+  dataset_size_bytes: 194659961
+  dataset_md5: 823ef560f4a54083348e58d67403e4bb
+  dataset_doi: https://doi.org/10.5281/zenodo.8026660
+  dataset_license: research use; official LICENSE.TXT mandates citation of https://doi.org/10.1016/j.media.2013.12.002
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

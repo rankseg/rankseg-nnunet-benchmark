@@ -1,0 +1,52 @@
+dataset:
+  id: Task009_Spleen
+  display_name: MSD Spleen (official 3D fullres + cascade ensemble OOF + official postprocessing)
+  labels:
+    0: background
+    1: spleen
+  channel_labels: [0, 1]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task009_Spleen_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task009_Spleen/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task009_Spleen/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/ensembled_postprocessed
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260717
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task009_Spleen/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task009_Spleen_ensemble_postprocessed_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; every case predicted by the one fold that did not train on it
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  model_configuration: arithmetic mean of official 3d_fullres and 3d_cascade_fullres OOF probabilities
+  configuration_role: primary; highest official validation average (0.9724) in archive summary.csv
+  configuration_selected_before_rankseg_evaluation: true
+  component_official_validation_averages: 3d_fullres=0.9661; 3d_cascade_fullres=0.9715
+  model_url: https://zenodo.org/api/records/4003545/files/Task009_Spleen.zip/content
+  model_md5: 3a7bef6d372b6fd9e1d7454a23bd793f
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://msd-for-monai.s3-us-west-2.amazonaws.com/Task09_Spleen.tar
+  dataset_md5: 410d4a301da4e5b2f6f86ec3ddba524e
+  dataset_license: CC-BY-SA-4.0
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

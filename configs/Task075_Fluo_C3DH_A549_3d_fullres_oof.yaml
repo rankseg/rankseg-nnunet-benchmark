@@ -1,0 +1,56 @@
+dataset:
+  id: Task075_Fluo_C3DH_A549
+  display_name: CTC Fluo-C3DH-A549 manual + simulated (official nnU-Net v1, 3d_fullres OOF; sequence-clustered)
+  labels:
+    0: background
+    1: cell
+  channel_labels: [0, 1]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task075_Fluo_C3DH_A549_3d_fullres/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task075_Fluo_C3DH_A549_ManAndSim/labelsTr
+  probability_glob: "fold_*/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task075_Fluo_C3DH_A549_3d_fullres/fold_predictions
+  native_predictions_postprocessed: false
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260814
+  cluster_regex: "^(Fluo-C3DH-A549(?:-SIM)?__[0-9]{2})__.*$"
+
+outputs:
+  dir: ../outputs/Task075_Fluo_C3DH_A549_3d_fullres_oof
+
+provenance:
+  evaluation_design: four-fold out-of-fold; each fold holds out one complete source sequence
+  split: exact nnU-Net v1 Task075 conversion protocol; manual-01, manual-02, simulated-01, and simulated-02 are the four validation folds
+  uncertainty: primary paired case bootstrap plus source-sequence-clustered paired bootstrap (4 sequences)
+  configuration_role: extended primary; only configuration present in the official model archive
+  configuration_selected_before_rankseg_evaluation: true
+  model_configuration: 3d_fullres, nnUNetTrainerV2, nnUNetPlansv2.1, model_final_checkpoint
+  official_postprocessing: none included in the released archive
+  model_url: https://zenodo.org/api/records/4003545/files/Task075_Fluo_C3DH_A549_ManAndSim.zip/content
+  model_md5: c097ad567d0a8d75a6d183bda19b5f6b
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  manual_dataset_url: https://data.celltrackingchallenge.net/training-datasets/Fluo-C3DH-A549.zip
+  simulated_dataset_url: https://data.celltrackingchallenge.net/training-datasets/Fluo-C3DH-A549-SIM.zip
+  manual_dataset_size_bytes: 256705648
+  simulated_dataset_size_bytes: 329974837
+  dataset_license: Cell Tracking Challenge conditions of use
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

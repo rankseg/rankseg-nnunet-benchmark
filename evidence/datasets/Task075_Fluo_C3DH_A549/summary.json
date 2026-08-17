@@ -1,0 +1,330 @@
+{
+  "dataset": {
+    "cases": 90,
+    "channel_labels": [
+      0,
+      1
+    ],
+    "cluster_regex": "^(Fluo-C3DH-A549(?:-SIM)?__[0-9]{2})__.*$",
+    "clusters": 4,
+    "display_name": "CTC Fluo-C3DH-A549 manual + simulated (official nnU-Net v1, 3d_fullres OOF; sequence-clustered)",
+    "foreground_labels": [
+      1
+    ],
+    "id": "Task075_Fluo_C3DH_A549",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "cell"
+    },
+    "metric_semantics": "exclusive labels",
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.00024437904357910156,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "Fluo-C3DH-A549-SIM__02__t020",
+          "delta": 0.0008529961634115
+        },
+        "cases": 90,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 90,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "Fluo-C3DH-A549__02__t006",
+          "delta": -0.0003489619150349
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "Fluo-C3DH-A549-SIM__02__t020",
+          "delta": 0.001364800050195
+        },
+        "cases": 90,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 90,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "Fluo-C3DH-A549__02__t006",
+          "delta": -0.0006100282892285
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.0004903973896869251,
+          "q10": 0.0008347265171365637,
+          "q25": 0.00019141385133369937,
+          "q50": -2.9955276128923458e-05,
+          "q75": -8.225891951574305e-05,
+          "q90": 3.0267234168213086e-05,
+          "q95": 1.5900307457905605e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8758783684099086,
+            "q10": 0.8813390589596094,
+            "q25": 0.9114980485832591,
+            "q50": 0.9575926960418537,
+            "q75": 0.9661735944501311,
+            "q90": 0.9681450441331308,
+            "q95": 0.9691024952713223
+          },
+          "rankseg": {
+            "q05": 0.8763687657995956,
+            "q10": 0.882173785476746,
+            "q25": 0.9116894624345928,
+            "q50": 0.9575627407657248,
+            "q75": 0.9660913355306153,
+            "q90": 0.9681753113672991,
+            "q95": 0.9691183955787802
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.00014204017521061152,
+          "q10": -8.732195392524567e-05,
+          "q25": -3.9867620909933565e-05,
+          "q50": 1.8890635405000022e-05,
+          "q75": 0.00021907045931524038,
+          "q90": 0.0005008238649967357,
+          "q95": 0.0006255091802110867
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.000776416810348346,
+          "q10": 0.0013351628235500623,
+          "q25": 0.00032317220985045303,
+          "q50": -5.513530058887106e-05,
+          "q75": -0.00015391708553524897,
+          "q90": 5.684881451906154e-05,
+          "q95": 2.9916938198870646e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.7791686183166128,
+            "q10": 0.7878523491559737,
+            "q25": 0.8373886624607103,
+            "q50": 0.918635832289,
+            "q75": 0.9345607654158499,
+            "q90": 0.9382569353645426,
+            "q95": 0.9400573129125064
+          },
+          "rankseg": {
+            "q05": 0.7799450351269611,
+            "q10": 0.7891875119795237,
+            "q25": 0.8377118346705608,
+            "q50": 0.9185806969884112,
+            "q75": 0.9344068483303146,
+            "q90": 0.9383137841790616,
+            "q95": 0.9400872298507053
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.000254092606694506,
+          "q10": -0.0001623443921311085,
+          "q25": -7.353944509747024e-05,
+          "q50": 3.5279027616519354e-05,
+          "q75": 0.00038104951656361963,
+          "q90": 0.0008093054592894556,
+          "q95": 0.0010069230165029198
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 0.00011861044434913204,
+      "foreground_mean_iou": 0.0001898300669826991
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9394401134274667,
+        "foreground_mean_iou": 0.8876003364887863
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.9395587238718158,
+        "foreground_mean_iou": 0.887790166555769
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": 6.945613855836309e-05,
+        "median": 0.00011818254448497933,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.00016946512484785898
+      },
+      "iou": {
+        "lower": 0.00010969771401418137,
+        "median": 0.00018875988852012915,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.00027348713211028933
+      }
+    },
+    "paired_cluster_bootstrap_delta": {
+      "dice": {
+        "clusters": 4,
+        "lower": -4.210450808461719e-05,
+        "median": 0.00011861044434891,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.0003209735928494384
+      },
+      "iou": {
+        "clusters": 4,
+        "lower": -7.619194075914049e-05,
+        "median": 0.0001898300669826991,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.0005176648959214214
+      }
+    }
+  },
+  "native_argmax_check": {
+    "cases": 90,
+    "max_case_mismatch_voxels": 4,
+    "mismatch_fraction": 1.7427951265110827e-07,
+    "mismatch_voxels": 55,
+    "native_masks_postprocessed": false,
+    "note": "Compared before official postprocessing; native masks were produced before float16 npz storage.",
+    "valid_voxels": 315585000
+  },
+  "postprocessing": null,
+  "provenance": {
+    "manifest": {
+      "configuration_role": "extended primary; only configuration present in the official model archive",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "Cell Tracking Challenge conditions of use",
+      "evaluation_design": "four-fold out-of-fold; each fold holds out one complete source sequence",
+      "manual_dataset_size_bytes": 256705648,
+      "manual_dataset_url": "https://data.celltrackingchallenge.net/training-datasets/Fluo-C3DH-A549.zip",
+      "model_configuration": "3d_fullres, nnUNetTrainerV2, nnUNetPlansv2.1, model_final_checkpoint",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "c097ad567d0a8d75a6d183bda19b5f6b",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task075_Fluo_C3DH_A549_ManAndSim.zip/content",
+      "official_postprocessing": "none included in the released archive",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "simulated_dataset_size_bytes": 329974837,
+      "simulated_dataset_url": "https://data.celltrackingchallenge.net/training-datasets/Fluo-C3DH-A549-SIM.zip",
+      "split": "exact nnU-Net v1 Task075 conversion protocol; manual-01, manual-02, simulated-01, and simulated-02 are the four validation folds",
+      "uncertainty": "primary paired case bootstrap plus source-sequence-clustered paired bootstrap (4 sequences)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-08-14T09:58:22.548844+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 90
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 71040000,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.19845994473952386,
+      "mean_postprocessing_milliseconds": 0.0,
+      "measurement_complete": true,
+      "median_milliseconds": 0.12004200834780931,
+      "median_postprocessing_milliseconds": 0.0
+    },
+    "rankseg": {
+      "device_counts": {
+        "cuda": 90
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 235322368,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 2.370161267269092,
+      "mean_postprocessing_milliseconds": 0.0,
+      "measurement_complete": true,
+      "median_milliseconds": 1.4632875099778175,
+      "median_postprocessing_milliseconds": 0.0
+    }
+  }
+}

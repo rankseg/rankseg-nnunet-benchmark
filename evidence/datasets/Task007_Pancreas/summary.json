@@ -1,0 +1,325 @@
+{
+  "dataset": {
+    "cases": 281,
+    "channel_labels": [
+      0,
+      1,
+      2
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Pancreas (official 3D fullres + cascade ensemble OOF + official postprocessing)",
+    "foreground_labels": [
+      1,
+      2
+    ],
+    "id": "Task007_Pancreas",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "pancreas",
+      "2": "pancreas tumour"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.000732421875,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "pancreas_409",
+          "delta": 0.2353645407482676
+        },
+        "cases": 281,
+        "improved_over_1pp": 66,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 191,
+        "thresholds": {
+          "10_pp": {
+            "negative": 2,
+            "negative_fraction": 0.0071174377224199285,
+            "positive": 13,
+            "positive_fraction": 0.046263345195729534
+          },
+          "1_pp": {
+            "negative": 24,
+            "negative_fraction": 0.08540925266903915,
+            "positive": 66,
+            "positive_fraction": 0.23487544483985764
+          },
+          "5_pp": {
+            "negative": 6,
+            "negative_fraction": 0.021352313167259787,
+            "positive": 29,
+            "positive_fraction": 0.10320284697508897
+          }
+        },
+        "worsened_over_1pp": 24,
+        "worst": {
+          "case_id": "pancreas_305",
+          "delta": -0.1104507714499235
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "pancreas_361",
+          "delta": 0.1962872075064395
+        },
+        "cases": 281,
+        "improved_over_1pp": 67,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 185,
+        "thresholds": {
+          "10_pp": {
+            "negative": 2,
+            "negative_fraction": 0.0071174377224199285,
+            "positive": 5,
+            "positive_fraction": 0.017793594306049824
+          },
+          "1_pp": {
+            "negative": 29,
+            "negative_fraction": 0.10320284697508897,
+            "positive": 67,
+            "positive_fraction": 0.23843416370106763
+          },
+          "5_pp": {
+            "negative": 6,
+            "negative_fraction": 0.021352313167259787,
+            "positive": 27,
+            "positive_fraction": 0.09608540925266904
+          }
+        },
+        "worsened_over_1pp": 29,
+        "worst": {
+          "case_id": "pancreas_305",
+          "delta": -0.1232212846281473
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.008644428502187163,
+          "q10": 0.008201539626268073,
+          "q25": 0.03457016576488936,
+          "q50": 0.006223567436169364,
+          "q75": 0.003581210992090522,
+          "q90": 0.0013679612668426877,
+          "q95": -0.0006315031148032002
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.38351576292559897,
+            "q10": 0.40740437828848725,
+            "q25": 0.5595444424730419,
+            "q50": 0.7466581319670448,
+            "q75": 0.8241190022427975,
+            "q90": 0.868117062565414,
+            "q95": 0.8823095847240137
+          },
+          "rankseg": {
+            "q05": 0.39216019142778613,
+            "q10": 0.4156059179147553,
+            "q25": 0.5941146082379313,
+            "q50": 0.7528816994032141,
+            "q75": 0.8277002132348881,
+            "q90": 0.8694850238322567,
+            "q95": 0.8816780816092105
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.019275754662570477,
+          "q10": -0.006493959307714237,
+          "q25": -0.002198729945238065,
+          "q50": 0.0014177644760386965,
+          "q75": 0.00847627708570875,
+          "q90": 0.052226260981372175,
+          "q95": 0.09458778673263246
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.01748604933013198,
+          "q10": 0.001270684120518395,
+          "q25": 0.012903360270961783,
+          "q50": 0.007385834253955004,
+          "q75": 0.007799799757214232,
+          "q90": 0.0017220353774367592,
+          "q95": -0.003950084005425181
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.2944847944847945,
+            "q10": 0.3300467465477406,
+            "q25": 0.44188237009017645,
+            "q50": 0.6040578579755336,
+            "q75": 0.7023050394686636,
+            "q90": 0.7703925244370817,
+            "q95": 0.7926014914559116
+          },
+          "rankseg": {
+            "q05": 0.31197084381492646,
+            "q10": 0.33131743066825897,
+            "q25": 0.45478573036113823,
+            "q50": 0.6114436922294886,
+            "q75": 0.7101048392258779,
+            "q90": 0.7721145598145185,
+            "q95": 0.7886514074504865
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.020605116367412912,
+          "q10": -0.010471907019486415,
+          "q25": -0.00295698085165913,
+          "q50": 0.0018492570895932703,
+          "q75": 0.009404812983117183,
+          "q90": 0.048208138376498955,
+          "q95": 0.074054762055349
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 0.011668957276955272,
+      "foreground_mean_iou": 0.008304564809474613
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.6839597098671824,
+        "foreground_mean_iou": 0.5705919913545803
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.6956286671441376,
+        "foreground_mean_iou": 0.5788965561640549
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": 0.00706621189938135,
+        "median": 0.011639892282371611,
+        "samples": 10000,
+        "seed": 20260729,
+        "upper": 0.016453293393925535
+      },
+      "iou": {
+        "lower": 0.004490240043410043,
+        "median": 0.008247990603514,
+        "samples": 10000,
+        "seed": 20260730,
+        "upper": 0.01232659070043719
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 281,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 7004225536
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task007_Pancreas/ensemble_3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_cascade_fullres__nnUNetTrainerV2CascadeFullRes__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "3d_fullres=0.6745; 3d_cascade_fullres=0.6766",
+      "configuration_role": "primary; highest official validation average (0.6821) in archive summary.csv",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "4f7080cfca169fa8066d17ce6eb061e4",
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task07_Pancreas.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "model_configuration": "arithmetic mean of official 3d_fullres and 3d_cascade_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "f8983162ffb28664221e74bc63dc5c99",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task007_Pancreas.zip/content",
+      "official_ensemble_class_dice_raw": "pancreas=0.8213936554942695; pancreas_tumour=0.5428467276191696",
+      "official_ensemble_validation_average": 0.6821201915567195,
+      "official_postprocessing": "no-op; for_which_classes is empty",
+      "prospective_guard_status": "fourth unseen task after freezing the separate 2x volume safety track; rule already rejected as general mechanism",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-28T07:06:24.745427+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 281
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 7087325184,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.7351982983962709,
+      "mean_postprocessing_milliseconds": 27.587065221725226,
+      "measurement_complete": true,
+      "median_milliseconds": 0.6548069650307298,
+      "median_postprocessing_milliseconds": 26.676881010644138
+    },
+    "rankseg": {
+      "device_counts": {
+        "cpu_fallback_after_cuda_oom": 1,
+        "cuda": 280
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 15401487360,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 234.5136086737366,
+      "mean_postprocessing_milliseconds": 27.5247645435119,
+      "measurement_complete": true,
+      "median_milliseconds": 78.37043202016503,
+      "median_postprocessing_milliseconds": 26.25539805740118
+    }
+  }
+}

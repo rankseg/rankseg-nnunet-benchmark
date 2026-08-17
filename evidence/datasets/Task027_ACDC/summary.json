@@ -1,0 +1,349 @@
+{
+  "dataset": {
+    "cases": 200,
+    "channel_labels": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "cluster_regex": "^(patient[0-9]{3})_frame[0-9]+$",
+    "clusters": 100,
+    "display_name": "ACDC (official nnU-Net v1, 2D + 3D fullres ensemble OOF; patient-clustered)",
+    "foreground_labels": [
+      1,
+      2,
+      3
+    ],
+    "id": "Task027_ACDC",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "right ventricle",
+      "2": "myocardium",
+      "3": "left ventricle cavity"
+    },
+    "metric_semantics": "exclusive labels",
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 36,
+    "max_probability_normalization_error": 0.0006844997406005859,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "patient090_frame11",
+          "delta": 0.0465974948810082
+        },
+        "cases": 200,
+        "improved_over_1pp": 7,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 181,
+        "thresholds": {
+          "10_pp": {
+            "negative": 1,
+            "negative_fraction": 0.005,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 12,
+            "negative_fraction": 0.06,
+            "positive": 7,
+            "positive_fraction": 0.035
+          },
+          "5_pp": {
+            "negative": 1,
+            "negative_fraction": 0.005,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 12,
+        "worst": {
+          "case_id": "patient049_frame11",
+          "delta": -0.1101278475184157
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "patient090_frame11",
+          "delta": 0.0728352259413669
+        },
+        "cases": 200,
+        "improved_over_1pp": 9,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 173,
+        "thresholds": {
+          "10_pp": {
+            "negative": 1,
+            "negative_fraction": 0.005,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 18,
+            "negative_fraction": 0.09,
+            "positive": 9,
+            "positive_fraction": 0.045
+          },
+          "5_pp": {
+            "negative": 2,
+            "negative_fraction": 0.01,
+            "positive": 1,
+            "positive_fraction": 0.005
+          }
+        },
+        "worsened_over_1pp": 18,
+        "worst": {
+          "case_id": "patient049_frame11",
+          "delta": -0.1395241071506568
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.00547791604176473,
+          "q10": 0.0014932817568606982,
+          "q25": -0.0021288366111306134,
+          "q50": 0.00021461886598139746,
+          "q75": -0.0005184215646707457,
+          "q90": 9.25843255383807e-05,
+          "q95": 3.382256440065401e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8651727441776865,
+            "q10": 0.8808794571781393,
+            "q25": 0.9119578210775332,
+            "q50": 0.9333574786880574,
+            "q75": 0.9457315013609193,
+            "q90": 0.9544174633583641,
+            "q95": 0.9593966345818433
+          },
+          "rankseg": {
+            "q05": 0.8706506602194513,
+            "q10": 0.882372738935,
+            "q25": 0.9098289844664026,
+            "q50": 0.9335720975540388,
+            "q75": 0.9452130797962486,
+            "q90": 0.9545100476839025,
+            "q95": 0.959430457146244
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.011483664805773995,
+          "q10": -0.005034280858067162,
+          "q25": -0.0008208301634956838,
+          "q50": 3.932051448218843e-05,
+          "q75": 0.0006949686976408798,
+          "q90": 0.002051548198791641,
+          "q95": 0.005559772339214167
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.005540268871526144,
+          "q10": 0.0024733937373078163,
+          "q25": -0.0023991308180770776,
+          "q50": 0.0005364588360203815,
+          "q75": -0.0011609493067964438,
+          "q90": 0.00019973488548541418,
+          "q95": -0.0001726178388594679
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.7664659295583074,
+            "q10": 0.7932866563837183,
+            "q25": 0.8395852429432381,
+            "q50": 0.8758773828728118,
+            "q75": 0.8983928561572248,
+            "q90": 0.9138282650664268,
+            "q95": 0.922408261314447
+          },
+          "rankseg": {
+            "q05": 0.7720061984298335,
+            "q10": 0.7957600501210261,
+            "q25": 0.837186112125161,
+            "q50": 0.8764138417088322,
+            "q75": 0.8972319068504283,
+            "q90": 0.9140279999519122,
+            "q95": 0.9222356434755875
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.017601755925601665,
+          "q10": -0.008822544677757005,
+          "q25": -0.001427110151379335,
+          "q50": 6.684491209313359e-05,
+          "q75": 0.0011103536473368036,
+          "q90": 0.003573799809535394,
+          "q95": 0.008674991851382747
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": -0.0007372864741763685,
+      "foreground_mean_iou": -0.0010090690879822617
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9245380896368061,
+        "foreground_mean_iou": 0.8634901515852192
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.9238008031626297,
+        "foreground_mean_iou": 0.862481082497237
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.0022576814421080447,
+        "median": -0.0006890537613677417,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.0005322391163043637
+      },
+      "iou": {
+        "lower": -0.0031484716609044726,
+        "median": -0.0009746675885675682,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.0008128500602728961
+      }
+    },
+    "paired_cluster_bootstrap_delta": {
+      "dice": {
+        "clusters": 100,
+        "lower": -0.002407550232929567,
+        "median": -0.0006887043061364895,
+        "samples": 10000,
+        "seed": 20260814,
+        "upper": 0.0006537975643195072
+      },
+      "iou": {
+        "clusters": 100,
+        "lower": -0.0033429090433654053,
+        "median": -0.0009543823397574203,
+        "samples": 10000,
+        "seed": 20260815,
+        "upper": 0.0010504286070645815
+      }
+    }
+  },
+  "native_argmax_check": {
+    "cases": 200,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "native_masks_postprocessed": false,
+    "note": "Compared before official postprocessing; native masks were produced before float16 npz storage.",
+    "valid_voxels": 102052928
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task027_ACDC/ensemble_2d__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      1,
+      3
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "2d=0.9165; 3d_fullres=0.9181",
+      "configuration_role": "primary; highest official validation average (0.9228) selected before RankSEG evaluation",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "confirmation_cohort_status": "predeclared extension dataset in the 12-dataset primary benchmark",
+      "dataset_download_manifest": "work/v1/source_data/ACDC_official_training/official_download_manifest.json",
+      "dataset_download_manifest_sha256": "5d737bdc32f2b6cc5743a305479eb1ad47e87035c5e5c535fa41cbe87a354f54",
+      "dataset_scope": "official labeled training database; 100 patients and two annotated cardiac phases per patient",
+      "dataset_selected_files": "400 official Girder items (200 ED/ES images plus 200 labels); 115805231 bytes; 4D cine files excluded because they are not inference inputs",
+      "dataset_url": "https://humanheart-project.creatis.insa-lyon.fr/database/api/v1/folder/63721d7073e9f0047faa0525/download",
+      "evaluation_design": "five-fold out-of-fold; both ED and ES observations of each patient remain in the same fold",
+      "model_configuration": "arithmetic mean of official 2d and 3d_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "70723b2d5dd7237e38461128b5d5c601",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task027_ACDC.zip/content",
+      "official_ensemble_validation_average": 0.9228,
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "exact nnU-Net v1 ACDC conversion protocol; patient-level KFold(n_splits=5, shuffle=true, random_state=12345)",
+      "uncertainty": "primary paired case bootstrap plus patient-clustered paired bootstrap (100 patients)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-08-14T07:36:30.089960+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 200
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 42074112,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.10176086056162603,
+      "mean_postprocessing_milliseconds": 4.418901348835789,
+      "measurement_complete": true,
+      "median_milliseconds": 0.07072149310261011,
+      "median_postprocessing_milliseconds": 4.272851001587696
+    },
+    "rankseg": {
+      "device_counts": {
+        "cuda": 200
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 301531648,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 3.1592694205755834,
+      "mean_postprocessing_milliseconds": 3.849099904182367,
+      "measurement_complete": true,
+      "median_milliseconds": 2.7121919993078336,
+      "median_postprocessing_milliseconds": 3.799647995037958
+    }
+  }
+}

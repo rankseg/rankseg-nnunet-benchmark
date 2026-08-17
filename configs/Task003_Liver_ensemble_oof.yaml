@@ -1,0 +1,60 @@
+dataset:
+  id: Task003_Liver
+  display_name: MSD Liver (official nnU-Net v1, 3D lowres + fullres ensemble OOF + official postprocessing)
+  labels:
+    0: background
+    1: liver
+    2: liver tumour
+  channel_labels: [0, 1, 2]
+  ignore_label: null
+
+inputs:
+  probabilities_dir: ../work/v1/oof/Task003_Liver_ensemble/fold_predictions
+  labels_dir: ../work/v1/nnUNet_raw_data_base/nnUNet_raw_data/Task003_Liver/labelsTr
+  probability_glob: "fold_*/not_postprocessed/*.npz"
+  probability_key: softmax
+  label_extension: .nii.gz
+  native_predictions_dir: ../work/v1/oof/Task003_Liver_ensemble/fold_predictions
+  native_predictions_postprocessed: false
+
+decoder:
+  rankseg:
+    metric: dice
+    solver: RMA
+    output_mode: multiclass
+    pruning_prob: 0.5
+    smooth: 0.0
+    unassigned_policy: max_score
+
+runtime:
+  device: cuda
+
+evaluation:
+  foreground_labels: [1, 2]
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260811
+  postprocessing_file: ../work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task003_Liver/ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json
+
+outputs:
+  dir: ../outputs/Task003_Liver_ensemble_oof
+
+provenance:
+  evaluation_design: five-fold out-of-fold; every case predicted by the one fold that did not train on it
+  split: nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)
+  confirmation_cohort_status: third dataset in the prospective cohort locked on 2026-07-28; executed after the predeclared small-cohort Task055 order amendment
+  model_configuration: arithmetic mean of official 3d_lowres and 3d_fullres OOF probabilities
+  configuration_role: primary; highest official final cross-validation Dice (0.8110709719) after correcting the pre-evaluation metadata-field audit
+  configuration_selected_before_rankseg_evaluation: true
+  selection_amendment: 2026-08-11 before any Task003 inference or RankSEG decoding; fallback parser corrected from diagnostic dc_per_class_pp_per_class to final dc_per_class_pp_all
+  component_official_validation_averages: 3d_lowres=0.7794939753541177; 3d_fullres=0.8044274404484966
+  official_ensemble_validation_average: 0.8110709718687849
+  official_ensemble_class_dice_final: liver=0.962103530924136; liver_tumour=0.6600384128134337
+  official_postprocessing: sequential largest-component operations for labels [1,2] together and label 1, learned by the official release
+  model_url: https://zenodo.org/api/records/4003545/files/Task003_Liver.zip/content
+  model_md5: 552e1ee740ef47fa8d8025246c84b5da
+  model_doi: https://doi.org/10.5281/zenodo.4003545
+  dataset_url: https://msd-for-monai.s3-us-west-2.amazonaws.com/Task03_Liver.tar
+  dataset_size_bytes: 28925891584
+  dataset_md5: a90ec6c4aa7f6a3d087205e23d4e6397
+  dataset_license: CC-BY-SA-4.0
+  rankseg_source_commit: 00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95

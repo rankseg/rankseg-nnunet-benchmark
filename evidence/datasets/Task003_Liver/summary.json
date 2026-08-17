@@ -1,0 +1,334 @@
+{
+  "dataset": {
+    "cases": 131,
+    "channel_labels": [
+      0,
+      1,
+      2
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Liver (official nnU-Net v1, 3D lowres + fullres ensemble OOF + official postprocessing)",
+    "foreground_labels": [
+      1,
+      2
+    ],
+    "id": "Task003_Liver",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "liver",
+      "2": "liver tumour"
+    },
+    "metric_semantics": "exclusive labels",
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.000732421875,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "liver_74",
+          "delta": 0.1802608091438029
+        },
+        "cases": 131,
+        "improved_over_1pp": 32,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 90,
+        "thresholds": {
+          "10_pp": {
+            "negative": 1,
+            "negative_fraction": 0.007633587786259542,
+            "positive": 6,
+            "positive_fraction": 0.04580152671755725
+          },
+          "1_pp": {
+            "negative": 9,
+            "negative_fraction": 0.06870229007633588,
+            "positive": 32,
+            "positive_fraction": 0.24427480916030533
+          },
+          "5_pp": {
+            "negative": 6,
+            "negative_fraction": 0.04580152671755725,
+            "positive": 9,
+            "positive_fraction": 0.06870229007633588
+          }
+        },
+        "worsened_over_1pp": 9,
+        "worst": {
+          "case_id": "liver_11",
+          "delta": -0.1643869239217236
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "liver_74",
+          "delta": 0.1508407722890528
+        },
+        "cases": 131,
+        "improved_over_1pp": 33,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 87,
+        "thresholds": {
+          "10_pp": {
+            "negative": 1,
+            "negative_fraction": 0.007633587786259542,
+            "positive": 6,
+            "positive_fraction": 0.04580152671755725
+          },
+          "1_pp": {
+            "negative": 11,
+            "negative_fraction": 0.08396946564885496,
+            "positive": 33,
+            "positive_fraction": 0.25190839694656486
+          },
+          "5_pp": {
+            "negative": 7,
+            "negative_fraction": 0.05343511450381679,
+            "positive": 10,
+            "positive_fraction": 0.07633587786259542
+          }
+        },
+        "worsened_over_1pp": 11,
+        "worst": {
+          "case_id": "liver_11",
+          "delta": -0.1295895428183378
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": -0.0014364578644626702,
+          "q10": -0.006340354842960472,
+          "q25": 0.017521622576786133,
+          "q50": 0.003258638784732093,
+          "q75": -0.0016013059971309307,
+          "q90": 0.00038674884575296,
+          "q95": -0.0002564116688721363
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.4895290768429241,
+            "q10": 0.6070010644140525,
+            "q25": 0.7872273352237619,
+            "q50": 0.8721648506383293,
+            "q75": 0.9179944737315657,
+            "q90": 0.9485716981902625,
+            "q95": 0.9771536015414592
+          },
+          "rankseg": {
+            "q05": 0.48809261897846146,
+            "q10": 0.6006607095710921,
+            "q25": 0.804748957800548,
+            "q50": 0.8754234894230614,
+            "q75": 0.9163931677344348,
+            "q90": 0.9489584470360155,
+            "q95": 0.9768971898725871
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0435370250095895,
+          "q10": -0.0058417411206515,
+          "q25": -0.0007079032864928392,
+          "q50": 0.00044967583225274943,
+          "q75": 0.00832291359608578,
+          "q90": 0.032316279552640714,
+          "q95": 0.08566096446341037
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.0023805308479710185,
+          "q10": 0.0036763412134985796,
+          "q25": 0.01847085696580897,
+          "q50": 0.00500276504197017,
+          "q75": -0.00265058885610836,
+          "q90": 0.0006989619509862877,
+          "q95": -0.000490019122130203
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.47302802560380713,
+            "q10": 0.5349833609079196,
+            "q25": 0.6856696342287304,
+            "q50": 0.7830541463109704,
+            "q75": 0.8516653409141022,
+            "q90": 0.9024552298237725,
+            "q95": 0.9553281559596236
+          },
+          "rankseg": {
+            "q05": 0.47540855645177815,
+            "q10": 0.5386597021214182,
+            "q25": 0.7041404911945394,
+            "q50": 0.7880569113529405,
+            "q75": 0.8490147520579938,
+            "q90": 0.9031541917747588,
+            "q95": 0.9548381368374934
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.040266749526563506,
+          "q10": -0.007224672073776306,
+          "q25": -0.0010404068703456781,
+          "q50": 0.0006989619509862877,
+          "q75": 0.010110806603907063,
+          "q90": 0.03197409942049667,
+          "q95": 0.08197928510061536
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 0.00824115101067624,
+      "foreground_mean_iou": 0.00790076194073519
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.8099902685454511,
+        "foreground_mean_iou": 0.7336443431926618
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.8182314195561273,
+        "foreground_mean_iou": 0.741545105133397
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": 0.0006236578755907526,
+        "median": 0.008170277157521832,
+        "samples": 10000,
+        "seed": 20260811,
+        "upper": 0.016294812979116422
+      },
+      "iou": {
+        "lower": 0.0008251612535462889,
+        "median": 0.007866806846770713,
+        "samples": 10000,
+        "seed": 20260812,
+        "upper": 0.014975240861609914
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 131,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "native_masks_postprocessed": false,
+    "note": "Compared before official postprocessing; native masks were produced before float16 npz storage.",
+    "valid_voxels": 15371599872
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task003_Liver/ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      [
+        1,
+        2
+      ],
+      1
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "3d_lowres=0.7794939753541177; 3d_fullres=0.8044274404484966",
+      "configuration_role": "primary; highest official final cross-validation Dice (0.8110709719) after correcting the pre-evaluation metadata-field audit",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "confirmation_cohort_status": "third dataset in the prospective cohort locked on 2026-07-28; executed after the predeclared small-cohort Task055 order amendment",
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "a90ec6c4aa7f6a3d087205e23d4e6397",
+      "dataset_size_bytes": 28925891584,
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task03_Liver.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "model_configuration": "arithmetic mean of official 3d_lowres and 3d_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "552e1ee740ef47fa8d8025246c84b5da",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task003_Liver.zip/content",
+      "official_ensemble_class_dice_final": "liver=0.962103530924136; liver_tumour=0.6600384128134337",
+      "official_ensemble_validation_average": 0.8110709718687849,
+      "official_postprocessing": "sequential largest-component operations for labels [1,2] together and label 1, learned by the official release",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "selection_amendment": "2026-08-11 before any Task003 inference or RankSEG decoding; fallback parser corrected from diagnostic dc_per_class_pp_per_class to final dc_per_class_pp_all",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-08-14T06:19:27.219051+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": {
+        "cuda": 131
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 9315549184,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 10.858612312341663,
+      "mean_postprocessing_milliseconds": 2757.1683116172767,
+      "measurement_complete": true,
+      "median_milliseconds": 2.9291750106494874,
+      "median_postprocessing_milliseconds": 1597.1533370029647
+    },
+    "rankseg": {
+      "device_counts": {
+        "cpu_fallback_after_cuda_oom": 48,
+        "cuda": 83
+      },
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 24105978880,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 16691.555476146495,
+      "mean_postprocessing_milliseconds": 1822.1617845279868,
+      "measurement_complete": true,
+      "median_milliseconds": 372.84201601869427,
+      "median_postprocessing_milliseconds": 1432.6261559908744
+    }
+  }
+}

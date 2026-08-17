@@ -1,0 +1,315 @@
+{
+  "dataset": {
+    "cases": 20,
+    "channel_labels": [
+      0,
+      1
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Heart (official nnU-Net v1, 3d_fullres OOF)",
+    "foreground_labels": [
+      1
+    ],
+    "id": "Task002_Heart",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "left atrium"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 20,
+    "max_probability_normalization_error": 0.00024437904357910156,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "la_019",
+          "delta": 0.0003386150706975
+        },
+        "cases": 20,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 20,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "la_010",
+          "delta": -0.0002970235098807
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "la_019",
+          "delta": 0.000547090757581
+        },
+        "cases": 20,
+        "improved_over_1pp": 0,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 20,
+        "thresholds": {
+          "10_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "1_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          },
+          "5_pp": {
+            "negative": 0,
+            "negative_fraction": 0.0,
+            "positive": 0,
+            "positive_fraction": 0.0
+          }
+        },
+        "worsened_over_1pp": 0,
+        "worst": {
+          "case_id": "la_010",
+          "delta": -0.0005205297932615
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 8.903161344664401e-05,
+          "q10": 0.000197892309572123,
+          "q25": 0.00011799096595477288,
+          "q50": 0.00014657876360057998,
+          "q75": -8.070612067634375e-05,
+          "q90": -6.567521997491443e-05,
+          "q95": -1.5233751901155834e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8949783685003185,
+            "q10": 0.903425168365008,
+            "q25": 0.9309046450672599,
+            "q50": 0.9363307102223004,
+            "q75": 0.943482987793147,
+            "q90": 0.9482365736726641,
+            "q95": 0.9555992021059778
+          },
+          "rankseg": {
+            "q05": 0.8950674001137652,
+            "q10": 0.9036230606745801,
+            "q25": 0.9310226360332147,
+            "q50": 0.936477288985901,
+            "q75": 0.9434022816724706,
+            "q90": 0.9481708984526892,
+            "q95": 0.9555839683540767
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0001513292817404921,
+          "q10": -9.327098822571322e-05,
+          "q25": -6.211197638697485e-05,
+          "q50": -1.1391633163770898e-05,
+          "q75": 8.010536210650843e-05,
+          "q90": 0.00021240623266106652,
+          "q95": 0.00022691388279223466
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.00014554413200551508,
+          "q10": 0.00032953654994138937,
+          "q25": 0.00020667949006480946,
+          "q50": 0.00025937869368364286,
+          "q75": -0.00014453900901933991,
+          "q90": -0.00011860035472799346,
+          "q95": -2.793073424778303e-05
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.8099239702055595,
+            "q10": 0.8238717581433199,
+            "q25": 0.8707413926708355,
+            "q50": 0.8802849986844122,
+            "q75": 0.8930129307039061,
+            "q90": 0.9015787216203137,
+            "q95": 0.9149736424825403
+          },
+          "rankseg": {
+            "q05": 0.810069514337565,
+            "q10": 0.8242012946932613,
+            "q25": 0.8709480721609003,
+            "q50": 0.8805443773780959,
+            "q75": 0.8928683916948867,
+            "q90": 0.9014601212655857,
+            "q95": 0.9149457117482925
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.0002704070326210173,
+          "q10": -0.00016701698054065738,
+          "q25": -0.00011164172039399012,
+          "q50": -2.0098263267376293e-05,
+          "q75": 0.00013797858919220585,
+          "q90": 0.0003562424305888046,
+          "q95": 0.0003992499981566978
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 1.907480672613815e-05,
+      "foreground_mean_iou": 2.928025210735541e-05
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.9329432557817139,
+        "foreground_mean_iou": 0.874815828327935
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.93296233058844,
+        "foreground_mean_iou": 0.8748451085800424
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -4.1380199502782926e-05,
+        "median": 1.865239444909239e-05,
+        "samples": 10000,
+        "seed": 20260717,
+        "upper": 8.238056325057808e-05
+      },
+      "iou": {
+        "lower": -7.319761635838363e-05,
+        "median": 2.9137570781267996e-05,
+        "samples": 10000,
+        "seed": 20260718,
+        "upper": 0.00013334279766241962
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 20,
+    "max_case_mismatch_voxels": 3,
+    "mismatch_fraction": 4.730157419638925e-08,
+    "mismatch_voxels": 11,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 232550400
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/3d_fullres/Task002_Heart/nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [
+      [
+        1
+      ]
+    ],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "configuration_role": "primary; highest official validation average (0.9329) in archive summary.csv",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "06ee59366e1e5124267b774dbd654057",
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task02_Heart.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "model_configuration": "3d_fullres, nnUNetTrainerV2, nnUNetPlansv2.1, model_final_checkpoint",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "47918532eabe17478eb29335b90b6604",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task002_Heart.zip/content",
+      "postprocessing_selection": "all-foreground largest connected component; learned by official release",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-27T03:03:22.112648+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 213909504,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 0.6013083620928228,
+      "mean_postprocessing_milliseconds": 72.1923233999405,
+      "measurement_complete": false,
+      "median_milliseconds": 0.2925694570876658,
+      "median_postprocessing_milliseconds": 68.81113752024248
+    },
+    "rankseg": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 707371520,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 7.656907290220261,
+      "mean_postprocessing_milliseconds": 71.1450211238116,
+      "measurement_complete": false,
+      "median_milliseconds": 4.756683949381113,
+      "median_postprocessing_milliseconds": 68.5957190580666
+    }
+  }
+}

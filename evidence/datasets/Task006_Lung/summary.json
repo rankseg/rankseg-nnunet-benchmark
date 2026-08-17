@@ -1,0 +1,316 @@
+{
+  "dataset": {
+    "cases": 63,
+    "channel_labels": [
+      0,
+      1
+    ],
+    "cluster_regex": null,
+    "clusters": null,
+    "display_name": "MSD Lung (official 3D lowres + fullres ensemble OOF; official no-op postprocessing)",
+    "foreground_labels": [
+      1
+    ],
+    "id": "Task006_Lung",
+    "ignore_label": null,
+    "labels": {
+      "0": "background",
+      "1": "lung tumour"
+    },
+    "metric_semantics": null,
+    "regions": null,
+    "segmentation_reader": null
+  },
+  "decoder": {
+    "argmax": {
+      "dimension": 0
+    },
+    "rankseg": {
+      "metric": "dice",
+      "output_mode": "multiclass",
+      "pruning_prob": 0.5,
+      "safety_max_volume_ratio": null,
+      "smooth": 0.0,
+      "solver": "RMA",
+      "unassigned_policy": "max_score"
+    }
+  },
+  "input_diagnostics": {
+    "crop_restored_cases": 0,
+    "max_probability_normalization_error": 0.00048828125,
+    "max_zero_sum_fraction": 0.0
+  },
+  "metrics": {
+    "case_level_safety": {
+      "dice": {
+        "best": {
+          "case_id": "lung_079",
+          "delta": 0.1667621171931517
+        },
+        "cases": 63,
+        "improved_over_1pp": 20,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 33,
+        "thresholds": {
+          "10_pp": {
+            "negative": 2,
+            "negative_fraction": 0.031746031746031744,
+            "positive": 2,
+            "positive_fraction": 0.031746031746031744
+          },
+          "1_pp": {
+            "negative": 10,
+            "negative_fraction": 0.15873015873015872,
+            "positive": 20,
+            "positive_fraction": 0.31746031746031744
+          },
+          "5_pp": {
+            "negative": 2,
+            "negative_fraction": 0.031746031746031744,
+            "positive": 4,
+            "positive_fraction": 0.06349206349206349
+          }
+        },
+        "worsened_over_1pp": 10,
+        "worst": {
+          "case_id": "lung_003",
+          "delta": -0.1619937885974203
+        }
+      },
+      "iou": {
+        "best": {
+          "case_id": "lung_079",
+          "delta": 0.207842535181734
+        },
+        "cases": 63,
+        "improved_over_1pp": 22,
+        "practical_threshold_pp": 1,
+        "stable_within_1pp": 28,
+        "thresholds": {
+          "10_pp": {
+            "negative": 2,
+            "negative_fraction": 0.031746031746031744,
+            "positive": 2,
+            "positive_fraction": 0.031746031746031744
+          },
+          "1_pp": {
+            "negative": 13,
+            "negative_fraction": 0.20634920634920634,
+            "positive": 22,
+            "positive_fraction": 0.3492063492063492
+          },
+          "5_pp": {
+            "negative": 2,
+            "negative_fraction": 0.031746031746031744,
+            "positive": 5,
+            "positive_fraction": 0.07936507936507936
+          }
+        },
+        "worsened_over_1pp": 13,
+        "worst": {
+          "case_id": "lung_059",
+          "delta": -0.1994349367146174
+        }
+      }
+    },
+    "case_quantiles": {
+      "dice": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.0031848001328864707,
+          "q10": -0.005353797283474293,
+          "q25": 0.0020850654547066583,
+          "q50": 0.010182543909158293,
+          "q75": -0.0021224716416112788,
+          "q90": -0.0013516574597151054,
+          "q95": -0.004090100520907414
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.016286897980321093,
+            "q10": 0.5506202384059181,
+            "q25": 0.6929642111356917,
+            "q50": 0.783678974877761,
+            "q75": 0.8642571080712429,
+            "q90": 0.888889996560668,
+            "q95": 0.8990562057129181
+          },
+          "rankseg": {
+            "q05": 0.019471698113207564,
+            "q10": 0.5452664411224438,
+            "q25": 0.6950492765903984,
+            "q50": 0.7938615187869192,
+            "q75": 0.8621346364296316,
+            "q90": 0.8875383391009529,
+            "q95": 0.8949661051920107
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.027620448743943416,
+          "q10": -0.017321432974894035,
+          "q25": -0.0044595715188523455,
+          "q50": 0.0005994821816988072,
+          "q75": 0.012499884246819859,
+          "q90": 0.03180476936295906,
+          "q95": 0.06307752318535652
+        }
+      },
+      "iou": {
+        "bottom_performance_quantile_uplift": {
+          "q05": 0.0019205550095337774,
+          "q10": -0.005151011748386336,
+          "q25": 0.00248376142585216,
+          "q50": 0.013881643905965468,
+          "q75": -0.0033268879013990116,
+          "q90": -0.0021869109291080546,
+          "q95": -0.006731901885684954
+        },
+        "case_performance": {
+          "argmax": {
+            "q05": 0.008865398167723757,
+            "q10": 0.37997704001141513,
+            "q25": 0.5301837651523953,
+            "q50": 0.644302744663155,
+            "q75": 0.7610156143518498,
+            "q90": 0.8000017959500464,
+            "q95": 0.8166328901504465
+          },
+          "rankseg": {
+            "q05": 0.010785953177257534,
+            "q10": 0.3748260282630288,
+            "q25": 0.5326675265782475,
+            "q50": 0.6581843885691204,
+            "q75": 0.7576887264504508,
+            "q90": 0.7978148850209383,
+            "q95": 0.8099009882647615
+          }
+        },
+        "paired_improvement": {
+          "q05": -0.04021278403431613,
+          "q10": -0.023073359271534463,
+          "q25": -0.007056700767816559,
+          "q50": 0.0007787593255513814,
+          "q75": 0.017961194043369377,
+          "q90": 0.04064527605651586,
+          "q95": 0.0830159044527126
+        }
+      }
+    },
+    "delta": {
+      "foreground_mean_dice": 0.004607687945563432,
+      "foreground_mean_iou": 0.0056960515409434365
+    },
+    "macro": {
+      "argmax": {
+        "foreground_mean_dice": 0.7228821782678972,
+        "foreground_mean_iou": 0.6023967011089095
+      },
+      "rankseg": {
+        "foreground_mean_dice": 0.7274898662134607,
+        "foreground_mean_iou": 0.608092752649853
+      }
+    },
+    "paired_case_bootstrap_delta": {
+      "dice": {
+        "lower": -0.0068224966577852065,
+        "median": 0.004500856862000857,
+        "samples": 10000,
+        "seed": 20260728,
+        "upper": 0.01566304864099429
+      },
+      "iou": {
+        "lower": -0.007840209424977224,
+        "median": 0.005819258135262795,
+        "samples": 10000,
+        "seed": 20260729,
+        "upper": 0.01882675587710411
+      }
+    },
+    "paired_cluster_bootstrap_delta": null
+  },
+  "native_argmax_check": {
+    "cases": 63,
+    "max_case_mismatch_voxels": 0,
+    "mismatch_fraction": 0.0,
+    "mismatch_voxels": 0,
+    "note": "Native nnU-Net masks may include postprocessing and were produced before float16 npz storage.",
+    "valid_voxels": 4628676608
+  },
+  "postprocessing": {
+    "applied_identically_to": [
+      "argmax",
+      "rankseg"
+    ],
+    "file": "${REPO_ROOT}/work/v1/RESULTS_FOLDER/nnUNet/ensembles/Task006_Lung/ensemble_3d_lowres__nnUNetTrainerV2__nnUNetPlansv2.1--3d_fullres__nnUNetTrainerV2__nnUNetPlansv2.1/postprocessing.json",
+    "for_which_classes": [],
+    "minimum_valid_object_sizes": null
+  },
+  "provenance": {
+    "manifest": {
+      "component_official_validation_averages": "3d_lowres=0.7109356428939274; 3d_fullres=0.7210804161410569",
+      "configuration_role": "primary; highest official validation average from per-configuration postprocessing.json fallback",
+      "configuration_selected_before_rankseg_evaluation": true,
+      "dataset_license": "CC-BY-SA-4.0",
+      "dataset_md5": "8afd997733c7fc0432f71255ba4e52dc",
+      "dataset_url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task06_Lung.tar",
+      "evaluation_design": "five-fold out-of-fold; every case predicted by the one fold that did not train on it",
+      "model_configuration": "arithmetic mean of official 3d_lowres and 3d_fullres OOF probabilities",
+      "model_doi": "https://doi.org/10.5281/zenodo.4003545",
+      "model_md5": "9c7f89f3b2153292f69d6478da6a218f",
+      "model_url": "https://zenodo.org/api/records/4003545/files/Task006_Lung.zip/content",
+      "official_ensemble_validation_average": 0.724114554965431,
+      "official_postprocessing": "no-op; for_which_classes is empty",
+      "prospective_guard_status": "third unseen task after freezing the separate 2x volume safety track",
+      "rankseg_source_commit": "00a1b87081d1d0cd1e8da8f8d1e6eb7a9c7dcf95",
+      "split": "nnU-Net v1 default KFold(n_splits=5, shuffle=true, random_state=12345)"
+    },
+    "runtime": {
+      "created_at_utc": "2026-07-27T10:05:16.269007+00:00",
+      "cuda": {
+        "available": true,
+        "cudnn": 91002,
+        "device": "NVIDIA GeForce RTX 3090",
+        "torch_cuda": "12.8"
+      },
+      "packages": {
+        "SimpleITK": "2.5.5",
+        "nnunetv2": "2.6.2",
+        "numpy": "2.2.6",
+        "rankseg": "0.0.5",
+        "torch": "2.8.0+cu128"
+      },
+      "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+      "python": "3.10.12"
+    }
+  },
+  "safety_guard": null,
+  "schema_version": 3,
+  "selection": {
+    "case_limit": null,
+    "scientific_run": true,
+    "warning": null
+  },
+  "timing": {
+    "argmax": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 2667577344,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 1.6430716662268554,
+      "mean_postprocessing_milliseconds": 106.70002783641279,
+      "measurement_complete": false,
+      "median_milliseconds": 1.3860580511391163,
+      "median_postprocessing_milliseconds": 96.68760898057371
+    },
+    "rankseg": {
+      "device_counts": null,
+      "max_failed_peak_memory_bytes": null,
+      "max_peak_memory_bytes": 8836350464,
+      "mean_failed_attempt_milliseconds": null,
+      "mean_milliseconds": 28.131651097080773,
+      "mean_postprocessing_milliseconds": 106.40863101885077,
+      "measurement_complete": false,
+      "median_milliseconds": 24.725458933971822,
+      "median_postprocessing_milliseconds": 96.6643700376153
+    }
+  }
+}

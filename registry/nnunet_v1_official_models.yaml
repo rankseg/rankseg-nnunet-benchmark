@@ -1,0 +1,150 @@
+source:
+  title: pretrained models for 3D semantic image segmentation with nnU-Net
+  authors: [Fabian Isensee, Paul F. Jaeger, Simon A. A. Kohl, Jens Petersen, Klaus H. Maier-Hein]
+  doi: https://doi.org/10.5281/zenodo.4003545
+  record_api: https://zenodo.org/api/records/4003545
+  nnunet_version: v1
+  license: CC-BY-NC-4.0
+  note: nnU-Net v1 weights are not loadable by v2; their exported probability arrays remain valid decoder inputs.
+
+models:
+  - task: Task001_BrainTumour
+    file: Task001_BrainTumour.zip
+    size_bytes: 1869973352
+    md5: 08f648c1247ab5deab2465ddc84f2feb
+    url: https://zenodo.org/api/records/4003545/files/Task001_BrainTumour.zip/content
+    cohort: core_msd
+  - task: Task002_Heart
+    file: Task002_Heart.zip
+    size_bytes: 2250439042
+    md5: 47918532eabe17478eb29335b90b6604
+    url: https://zenodo.org/api/records/4003545/files/Task002_Heart.zip/content
+    download_mirror: https://zenodo.org/api/records/3734294/files/Task002_Heart.zip/content
+    download_mirror_note: Same authors' earlier Zenodo record; identical file size and MD5.
+    cohort: core_msd
+  - task: Task003_Liver
+    file: Task003_Liver.zip
+    size_bytes: 5049539577
+    md5: 552e1ee740ef47fa8d8025246c84b5da
+    url: https://zenodo.org/api/records/4003545/files/Task003_Liver.zip/content
+    cohort: core_msd
+  - task: Task004_Hippocampus
+    file: Task004_Hippocampus.zip
+    size_bytes: 284204269
+    md5: 44dad55102901e203f5cda68084f0c5c
+    url: https://zenodo.org/api/records/4003545/files/Task004_Hippocampus.zip/content
+    cohort: core_msd
+  - task: Task005_Prostate
+    file: Task005_Prostate.zip
+    size_bytes: 2785469842
+    md5: 364cd721162977d7e7e37d59f41c0dc4
+    url: https://zenodo.org/api/records/4003545/files/Task005_Prostate.zip/content
+    cohort: core_msd
+  - task: Task006_Lung
+    file: Task006_Lung.zip
+    size_bytes: 5006898593
+    md5: 9c7f89f3b2153292f69d6478da6a218f
+    url: https://zenodo.org/api/records/4003545/files/Task006_Lung.zip/content
+    cohort: core_msd
+  - task: Task007_Pancreas
+    file: Task007_Pancreas.zip
+    size_bytes: 5002701016
+    md5: f8983162ffb28664221e74bc63dc5c99
+    url: https://zenodo.org/api/records/4003545/files/Task007_Pancreas.zip/content
+    cohort: core_msd
+  - task: Task008_HepaticVessel
+    file: Task008_HepaticVessel.zip
+    size_bytes: 5002919698
+    md5: 5cb797f542b43f882e1873129cd11021
+    url: https://zenodo.org/api/records/4003545/files/Task008_HepaticVessel.zip/content
+    download_mirror: https://zenodo.org/api/records/3734294/files/Task008_HepaticVessel.zip/content
+    download_mirror_note: Same authors' earlier Zenodo record; identical file size and MD5.
+    cohort: core_msd
+  - task: Task009_Spleen
+    file: Task009_Spleen.zip
+    size_bytes: 5025132998
+    md5: 3a7bef6d372b6fd9e1d7454a23bd793f
+    url: https://zenodo.org/api/records/4003545/files/Task009_Spleen.zip/content
+    cohort: core_msd
+  - task: Task010_Colon
+    file: Task010_Colon.zip
+    size_bytes: 5003911923
+    md5: ffa6a2ee13a41cdbde3addc151d3c773
+    url: https://zenodo.org/api/records/4003545/files/Task010_Colon.zip/content
+    cohort: core_msd
+  - task: Task017_AbdominalOrganSegmentation
+    file: Task017_AbdominalOrganSegmentation.zip
+    size_bytes: 4987156551
+    md5: 017e463a292b396882302dfa643f62f8
+    url: https://zenodo.org/api/records/4003545/files/Task017_AbdominalOrganSegmentation.zip/content
+    cohort: extension
+  - task: Task024_Promise
+    file: Task024_Promise.zip
+    size_bytes: 2258526938
+    md5: c8dfacef77d4390786572194aa506595
+    url: https://zenodo.org/api/records/4003545/files/Task024_Promise.zip/content
+    cohort: extension
+  - task: Task027_ACDC
+    file: Task027_ACDC.zip
+    size_bytes: 1830026265
+    md5: 70723b2d5dd7237e38461128b5d5c601
+    url: https://zenodo.org/api/records/4003545/files/Task027_ACDC.zip/content
+    download_mirror: https://zenodo.org/api/records/3734294/files/Task027_ACDC.zip/content
+    download_mirror_note: Same authors' earlier Zenodo record; identical file size and MD5.
+    cohort: extension
+  - task: Task029_LITS
+    file: Task029_LITS.zip
+    size_bytes: 5051274279
+    md5: d31bcdee55c7216b18780e334e3f1724
+    url: https://zenodo.org/api/records/4003545/files/Task029_LITS.zip/content
+    cohort: extension
+  - task: Task035_ISBILesionSegmentation
+    file: Task035_ISBILesionSegmentation.zip
+    size_bytes: 1852161067
+    md5: c8abac881ce86f9043f5f04cfeb170f1
+    url: https://zenodo.org/api/records/4003545/files/Task035_ISBILesionSegmentation.zip/content
+    cohort: extension
+  - task: Task038_CHAOS_Task_3_5_Variant2
+    file: Task038_CHAOS_Task_3_5_Variant2.zip
+    size_bytes: 2774011680
+    md5: 57bc8bc3c80a5dc08917aafd517407b4
+    url: https://zenodo.org/api/records/4003545/files/Task038_CHAOS_Task_3_5_Variant2.zip/content
+    cohort: extension
+  - task: Task048_KiTS_clean
+    file: Task048_KiTS_clean.zip
+    size_bytes: 5046705739
+    md5: a0e1c4929f223de2eb829f916c0c6a14
+    url: https://zenodo.org/api/records/4003545/files/Task048_KiTS_clean.zip/content
+    cohort: extension
+  - task: Task055_SegTHOR
+    file: Task055_SegTHOR.zip
+    size_bytes: 5019434005
+    md5: ae464374487596ab54f9d24bfd14b767
+    url: https://zenodo.org/api/records/4003545/files/Task055_SegTHOR.zip/content
+    download_mirror: https://zenodo.org/api/records/3734294/files/Task055_SegTHOR.zip/content
+    download_mirror_note: Same authors' earlier Zenodo record; identical file size and MD5.
+    cohort: core_extra
+  - task: Task061_CREMI
+    file: Task061_CREMI.zip
+    size_bytes: 1655286490
+    md5: 6f03df283b73bb83d85a10ebe4cb3c4e
+    url: https://zenodo.org/api/records/4003545/files/Task061_CREMI.zip/content
+    cohort: core_extra
+  - task: Task075_Fluo_C3DH_A549_ManAndSim
+    file: Task075_Fluo_C3DH_A549_ManAndSim.zip
+    size_bytes: 1336092839
+    md5: c097ad567d0a8d75a6d183bda19b5f6b
+    url: https://zenodo.org/api/records/4003545/files/Task075_Fluo_C3DH_A549_ManAndSim.zip/content
+    cohort: core_extra
+  - task: Task076_Fluo_N3DH_SIM
+    file: Task076_Fluo_N3DH_SIM.zip
+    size_bytes: 227329225
+    md5: d14246688098a797fd5862867a6a3336
+    url: https://zenodo.org/api/records/4003545/files/Task076_Fluo_N3DH_SIM.zip/content
+    cohort: core_extra
+  - task: Task089_Fluo-N2DH-SIM_thickborder_time
+    file: Task089_Fluo-N2DH-SIM_thickborder_time.zip
+    size_bytes: 306858327
+    md5: e319d22d13f64b1e6a901dde4d22b371
+    url: https://zenodo.org/api/records/4003545/files/Task089_Fluo-N2DH-SIM_thickborder_time.zip/content
+    cohort: core_extra
