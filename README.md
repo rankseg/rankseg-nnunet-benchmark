@@ -1,202 +1,144 @@
 # RankSEG × nnU-Net benchmark
 
-This repository builds the evidence requested by the nnU-Net maintainer for an optional RankSEG decoder: paired,
-leakage-free comparisons on more than ten diverse datasets, including regressions and resource cost rather than only
-reporting average gains.
+This repository evaluates one focused question: **what changes when
+[nnU-Net](https://github.com/MIC-DKFZ/nnUNet)'s usual voxel-wise argmax is replaced by
+[RankSEG](https://github.com/rankseg/rankseg) at inference time?** The comparison uses the same exported model outputs
+for both decoders and does not change training, checkpoints, preprocessing, or test data.
 
-The benchmark consumes the probability arrays already exported by nnU-Net (`probabilities` in v2, `softmax` in v1).
-Argmax and RankSEG therefore see exactly the same model output; no checkpoint, training code, or preprocessing is
-changed. When v1 stores probabilities only inside its nonzero crop, the evaluator reads the adjacent restricted
-`crop_bbox` metadata and restores background probability outside the crop before either decoder runs.
+The public evidence package contains 16 datasets and 2,181 labeled cases. It is small enough to clone, checksummed,
+and independently rebuildable without downloading images, model weights, or probability arrays.
 
-## Probability calibration caveat
+## Experiment design
 
-The official nnU-Net v1 checkpoints that make up most of Full-16 were trained with nnU-Net's default cross-entropy
-plus soft-Dice objective. The cached arrays used here are the exported post-softmax outputs: they are finite,
-nonnegative, and normalized to the probability simplex. Those properties do not, by themselves, establish that the
-scores are calibrated estimates of conditional class probabilities. Because RankSEG treats its inputs as
-probabilities, calibration may affect the size or direction of its gain over argmax.
+### Comparison
 
-Full-16 therefore answers the practical plug-in question for standard official nnU-Net outputs; it does not claim
-that those outputs are calibrated or that the observed gain is independent of the training loss. No recalibration
-was fitted or tuned for this benchmark. Overconfidence is a follow-up hypothesis, not a conclusion inferred from the
-composite loss alone. A separate matched study will compare CE-only and CE + soft-Dice checkpoints while measuring
-both calibration and the RankSEG-minus-argmax effect. See the
-[fixed protocol](docs/BENCHMARK_PROTOCOL.md#probability-interpretation-and-calibration).
+- **Baseline:** voxel-wise argmax.
+- **Alternative:** RankSEG with its public default multiclass Dice configuration.
+- **Input:** the identical post-softmax nnU-Net array for both decoders.
+- **Postprocessing:** the configuration selected by the official model release, applied identically to both outputs.
+- **Tuning:** no dataset-specific RankSEG tuning and no calibration fitted on evaluation cases.
 
-## Current status
+Most datasets use official nnU-Net v1 checkpoints because they provide a broad, checksummed model release. A
+TotalSegmentator checkpoint supplies an additional nnU-Net v2 inference-path replication.
 
-- The complete model registry contains all 22 nnU-Net v1 task archives released by the nnU-Net authors on
-  [Zenodo](https://doi.org/10.5281/zenodo.4003545), with byte sizes and MD5 checksums.
-- nnU-Net's current documentation still says that a central pretrained-model release is not available for v2. The
-  broad study therefore uses official v1 models, with v2 replications such as TotalSegmentator to verify the current
-  inference path.
-- The main result is the complete Full-16 benchmark: 16 datasets, 2,181 labeled cases, 13 positive and 3 negative
-  dataset-level Dice changes. The macro-average across the 16 datasets (each dataset weighted equally) is 83.63646%
-  for argmax and 83.84318% for RankSEG, a mean improvement of +0.20671 pp; the overall exact sign-test p=0.02127
-  and Wilcoxon p=0.01099. Only these full-benchmark p-values are reported.
-- Full-16 comprises a Core-12 official nnU-Net v1 OOF subset plus four robustness cohorts: Task024 PROMISE12
-  (30 independent former-hidden-test cases, -0.08217 pp), Task038 CHAOS MRI (60 patient-clustered OOF volumes,
-  +0.17601 pp), Task075 Fluo-C3DH-A549 (90 sequence-clustered OOF cases, +0.01186 pp), and CHAOS-CT evaluated with
-  TotalSegmentator nnU-Net v2 (20 external cases, +0.00542 pp).
-- Core-12 remains a sensitivity analysis documenting the original official-v1 OOF sequence; it is not a competing
-  main benchmark. Its 1,981 cases split 10 positive and 2 negative datasets.
-- Three individual datasets have paired intervals entirely above zero: Liver (+0.82412 pp), Pancreas (+1.16690 pp),
-  and HepaticVessel (+0.53481 pp). ACDC declines by 0.07373 pp using a patient-clustered analysis; SegTHOR declines
-  by a negligible 0.00188 pp. All results are retained regardless of direction.
-- The 16 included datasets span CT, single- and multisequence MRI, tumours, organs, vessels, thoracic structures,
-  BraTS nested regions, cardiac cine MRI, and microscopy. Ten configurations are probability ensembles and six are
-  single models.
-- At a practical threshold of ±1 Dice pp, 246 of 2,181 cases improve, 1,802 remain stable, and 133 worsen; changes
-  beyond 10 Dice pp include 9 losses and 31 gains. This supports RankSEG as an optional decoder with positive average
-  benefit, not as a guaranteed monotonic replacement for argmax.
-- Rejected development paths (the post-hoc volume guard, Dice-loss inversion, slice-wise decoding, and ineligible
-  datasets) are summarized separately and are not part of the maintained benchmark implementation.
+### Cohort
 
-## Full-16 benchmark results
+Full-16 contains:
 
-| Task | Dataset | Model | Cases | Argmax mean Dice (%) | RankSEG mean Dice (%) | Dice Δ (pp) | Improved (>+1 pp) | Stable (within ±1 pp) | Worsened (<-1 pp) |
-|---|---|---|---:|---:|---:|---:|---:|---:|---:|
-| CHAOS | CHAOS CT | nnU-Net v2 · TotalSegmentator Dataset291 · 3d_fullres (fold 0) | 20 | 97.08608 | 97.09150 | +0.00542 | 0 | 20 | 0 |
-| Task001 | MSD BrainTumour | nnU-Net v1 · 3d_fullres | 484 | 84.57217 | 84.57988 | +0.00771 | 7 | 476 | 1 |
-| Task002 | MSD Heart | nnU-Net v1 · 3d_fullres | 20 | 93.29433 | 93.29623 | +0.00191 | 0 | 20 | 0 |
-| Task003 | MSD Liver | nnU-Net v1 · 3d_lowres + 3d_fullres ensemble | 131 | 80.99903 | 81.82314 | +0.82412 | 32 | 90 | 9 |
-| Task004 | MSD Hippocampus | nnU-Net v1 · 3d_fullres | 260 | 88.90847 | 88.91252 | +0.00405 | 0 | 260 | 0 |
-| Task005 | MSD Prostate | nnU-Net v1 · 2d + 3d_fullres ensemble | 32 | 75.95709 | 75.98004 | +0.02295 | 8 | 20 | 4 |
-| Task006 | MSD Lung | nnU-Net v1 · 3d_lowres + 3d_fullres ensemble | 63 | 72.28822 | 72.74899 | +0.46077 | 20 | 33 | 10 |
-| Task007 | MSD Pancreas | nnU-Net v1 · 3d_fullres + 3d_cascade_fullres ensemble | 281 | 68.39597 | 69.56287 | +1.16690 | 66 | 191 | 24 |
-| Task008 | MSD HepaticVessel | nnU-Net v1 · 3d_lowres + 3d_fullres ensemble | 303 | 68.63054 | 69.16535 | +0.53481 | 85 | 169 | 49 |
-| Task009 | MSD Spleen | nnU-Net v1 · 3d_fullres + 3d_cascade_fullres ensemble | 41 | 97.23659 | 97.24320 | +0.00661 | 0 | 41 | 0 |
-| Task010 | MSD Colon | nnU-Net v1 · 3d_cascade_fullres (3d_lowres input) | 126 | 48.91759 | 49.15961 | +0.24203 | 14 | 90 | 22 |
-| Task024 | PROMISE12 former hidden test | nnU-Net v1 · 2d + 3d_fullres ensemble | 30 | 91.93567 | 91.85350 | -0.08217 | 0 | 29 | 1 |
-| Task027 | ACDC | nnU-Net v1 · 2d + 3d_fullres ensemble | 200 | 92.45381 | 92.38008 | -0.07373 | 7 | 181 | 12 |
-| Task038 | CHAOS MRI | nnU-Net v1 · 2d + 3d_fullres ensemble | 60 | 92.04389 | 92.21990 | +0.17601 | 7 | 52 | 1 |
-| Task055 | SegTHOR | nnU-Net v1 · 3d_fullres + 3d_cascade_fullres ensemble | 40 | 91.51999 | 91.51811 | -0.00188 | 0 | 40 | 0 |
-| Task075 | CTC Fluo-C3DH-A549 manual + simulated | nnU-Net v1 · 3d_fullres | 90 | 93.94401 | 93.95587 | +0.01186 | 0 | 90 | 0 |
+- a Core-12 cohort evaluated with strict five-fold out-of-fold (OOF) prediction from official nnU-Net v1 models;
+- PROMISE12, evaluated on 30 independent former-hidden-test cases;
+- CHAOS MRI, evaluated out of fold with uncertainty clustered by patient;
+- Fluo-C3DH-A549, evaluated out of fold with uncertainty clustered by sequence;
+- CHAOS CT, evaluated on 20 external cases with a TotalSegmentator nnU-Net v2 checkpoint.
 
-See the checked-in [Full-16 report](evidence/full16/RESULTS.md), [results to date](results/RESULTS_TO_DATE.md),
-the detailed [Hippocampus](results/PRELIMINARY.md),
-[Heart](results/HEART_PRELIMINARY.md), [Prostate](results/PROSTATE_PRELIMINARY.md),
-[Spleen](results/SPLEEN_PRELIMINARY.md), [Colon](results/COLON_PRELIMINARY.md), and
-[Lung](results/LUNG_PRELIMINARY.md), [Pancreas](results/PANCREAS_PRELIMINARY.md) reports,
-[the CHAOS MRI evidence](evidence/datasets/Task038_CHAOS/summary.json),
-[the fixed protocol](docs/BENCHMARK_PROTOCOL.md), and the
-[dataset execution plan](docs/DATASET_PLAN.md). See [rejected experiments](docs/REJECTED_EXPERIMENTS.md) for removed
-development branches and exclusion reasons.
+The datasets span CT, MRI, cardiac cine MRI, tumour and organ segmentation, vessels, nested BraTS evaluation regions,
+and microscopy. Exactly one model configuration was selected per dataset before the cross-dataset analysis. Every
+eligible result was retained, including regressions.
 
-## Project layout
+### Outcomes
 
-- `src/rankseg_nnunet_bench/`: the maintained evaluator, metrics, I/O, OOF, registry, and aggregate implementation;
-- `configs/`: one manifest per reported dataset/configuration plus clearly named sensitivity manifests;
-- `scripts/`: reproducible dataset pipelines, conversion/audit utilities, and the single Full-16 aggregate builder;
-- `registry/`: checksummed official model and dataset sources;
-- `tests/`: unit and synthetic end-to-end coverage of the maintained benchmark path;
-- `evidence/`: compact, checksummed Full-16 summaries, paired case deltas, audits, and rebuilt aggregate;
-- `outputs/`, `work/`, `data/`, and `artifacts/`: ignored local inputs and large generated artifacts;
-- `docs/`: the fixed protocol, dataset plan, and rejected-experiment record.
+The primary outcome is the change in foreground macro mean Dice:
 
-See [`scripts/README.md`](scripts/README.md) for the supported script entry points.
+```text
+Δ Dice = Dice(RankSEG) - Dice(argmax)
+```
 
-## Install
+Each dataset is one unit in the Full-16 analysis, regardless of its number of cases. The benchmark also reports
+paired bootstrap intervals, case-level changes, tail behavior, decoder runtime, and recorded peak memory. Repeated
+observations from the same patient or sequence are clustered where required.
 
-The reference machine uses Python 3.10, PyTorch 2.8.0 + CUDA 12.8, nnU-Net 2.6.2, nnU-Net v1.7.1, and an RTX 3090.
+The complete rules are in the [fixed benchmark protocol](docs/BENCHMARK_PROTOCOL.md).
+
+## Results
+
+- **16 datasets and 2,181 cases**
+- **13 positive and 3 negative** dataset-level Dice changes
+- Macro-average Dice: **83.63646% argmax** vs **83.84318% RankSEG**
+- Dataset-level mean change: **+0.20671 pp**; median change: **+0.00979 pp**
+- Exact two-sided sign test: **p=0.02127**; Wilcoxon signed-rank test: **p=0.01099**
+- At a ±1 Dice pp case threshold: **246 improved, 1,802 stable, 133 worsened**
+
+| Dataset | Evaluation | Cases | Argmax Dice (%) | RankSEG Dice (%) | Δ (pp) |
+|---|---|---:|---:|---:|---:|
+| MSD BrainTumour | v1 OOF | 484 | 84.57217 | 84.57988 | +0.00771 |
+| MSD Heart | v1 OOF | 20 | 93.29433 | 93.29623 | +0.00191 |
+| MSD Liver | v1 OOF ensemble | 131 | 80.99903 | 81.82314 | +0.82412 |
+| MSD Hippocampus | v1 OOF | 260 | 88.90847 | 88.91252 | +0.00405 |
+| MSD Prostate | v1 OOF ensemble | 32 | 75.95709 | 75.98004 | +0.02295 |
+| MSD Lung | v1 OOF ensemble | 63 | 72.28822 | 72.74899 | +0.46077 |
+| MSD Pancreas | v1 OOF ensemble | 281 | 68.39597 | 69.56287 | +1.16690 |
+| MSD HepaticVessel | v1 OOF ensemble | 303 | 68.63054 | 69.16535 | +0.53481 |
+| MSD Spleen | v1 OOF ensemble | 41 | 97.23659 | 97.24320 | +0.00661 |
+| MSD Colon | v1 OOF | 126 | 48.91759 | 49.15961 | +0.24203 |
+| PROMISE12 | v1 independent test ensemble | 30 | 91.93567 | 91.85350 | -0.08217 |
+| ACDC | v1 OOF ensemble; patient-clustered | 200 | 92.45381 | 92.38008 | -0.07373 |
+| CHAOS MRI | v1 OOF ensemble; patient-clustered | 60 | 92.04389 | 92.21990 | +0.17601 |
+| SegTHOR | v1 OOF ensemble | 40 | 91.51999 | 91.51811 | -0.00188 |
+| Fluo-C3DH-A549 | v1 OOF; sequence-clustered | 90 | 93.94401 | 93.95587 | +0.01186 |
+| CHAOS CT | v2 external test | 20 | 97.08608 | 97.09150 | +0.00542 |
+
+The three negative dataset-level results are retained: PROMISE12 (-0.08217 pp), ACDC (-0.07373 pp), and SegTHOR
+(-0.00188 pp). Three datasets have paired intervals entirely above zero: Liver, Pancreas, and HepaticVessel.
+
+See the [generated Full-16 report](evidence/full16/RESULTS.md) for model configurations and per-dataset case outcome
+counts, or [browse the machine-readable evidence](evidence/).
+
+## Conclusion
+
+On standard official nnU-Net outputs, RankSEG produced a positive average Dice change and more dataset-level gains
+than losses. The result supports RankSEG as an **optional inference decoder** that can be evaluated without retraining
+the underlying model.
+
+It does not support replacing argmax unconditionally. The median gain is small, three datasets decline, and some
+individual cases have material regressions. The defensible claim is therefore positive average benefit with explicit
+downside reporting—not guaranteed improvement for every dataset or patient.
+
+## Notes
+
+### Probability calibration
+
+The official v1 checkpoints used in most of Full-16 were trained with nnU-Net's default cross-entropy plus soft-Dice
+objective. Their exported arrays are valid softmax-normalized scores, but normalization alone does not establish that
+they are calibrated estimates of conditional class probabilities. Because RankSEG treats its inputs as probabilities,
+calibration may affect the observed decoder difference.
+
+Full-16 measures the practical plug-in effect on standard official outputs. It does not claim that those outputs are
+calibrated or that the result is independent of the training loss. Overconfidence is a hypothesis for a separate,
+matched CE-only versus CE + soft-Dice study; it is not inferred from the loss alone. See the
+[calibration protocol](docs/BENCHMARK_PROTOCOL.md#probability-interpretation-and-calibration).
+
+### Scope and limitations
+
+- Most evidence comes from official nnU-Net v1 models; the v2 result is an implementation-path replication, not an
+  equally broad v2 benchmark.
+- BrainTumour uses mutually exclusive softmax channels followed by nested-region metric evaluation. Full-16 does not
+  validate RankSEG on models trained with overlapping sigmoid region channels.
+- No Full-16 dataset uses an ignore label.
+- Missing legacy timing or memory measurements are stored as `null`; the schema migration does not invent them.
+- Rejected post-hoc variants and exclusions remain visible in
+  [Rejected experiments](docs/REJECTED_EXPERIMENTS.md).
+
+### Verify the published evidence
 
 ```bash
 python -m venv env
 env/bin/python -m pip install -r requirements.txt
-env/bin/python -m pip install nnunet==1.7.1
 env/bin/python -m pip install --no-build-isolation -e .
+env/bin/rankseg-nnunet-bench verify-evidence evidence
 ```
 
-`requirements.txt` installs the published `rankseg==0.0.5` package directly from PyPI. Each manifest also records the
-RankSEG release/source revision used to produce its cached result. `requirements-lock.txt` is the complete,
-platform-specific snapshot of the Linux/Python 3.10/CUDA 12.8 reference environment; use `requirements.txt` for a
-portable install and the lock when reproducing that exact environment.
+Verification checks every published SHA256 and schema, validates all case counts, rebuilds the Full-16 aggregate in a
+temporary directory, and requires byte-identical aggregate outputs. `requirements-lock.txt` records the complete
+Linux/Python 3.10/CUDA 12.8 reference environment; `requirements.txt` is the portable installation input.
 
-## Verify the published evidence
+### Reproduce or extend the benchmark
 
-The checked-in package can be verified without images, checkpoints, or cached probability arrays:
+- [Dataset manifests](configs/) define inputs, decoder settings, evaluation design, and provenance.
+- [Model and dataset registries](registry/) record publisher URLs, sizes, and checksums.
+- [Script guide](scripts/README.md) documents the supported download, conversion, OOF inference, audit, and aggregate
+  entry points.
+- [Dataset plan](docs/DATASET_PLAN.md) records cohort construction and completion status.
+- [Results to date](results/RESULTS_TO_DATE.md) provides the detailed scientific narrative and regression audit.
 
-```bash
-rankseg-nnunet-bench verify-evidence evidence
-```
-
-This checks every published SHA256, validates all normalized schema-v3 summaries and case counts, then rebuilds the
-Full-16 aggregate in a temporary directory and requires byte-identical aggregate outputs. See
-[`evidence/README.md`](evidence/README.md) for the package boundary.
-
-## Evaluate cached probabilities
-
-Create a manifest from `configs/example_dataset.yaml`, then run:
-
-```bash
-rankseg-nnunet-bench evaluate configs/my_dataset.yaml
-```
-
-Each dataset produces:
-
-- `case_label_metrics.csv`: TP, FP, FN, and Dice for every case, label, and decoder;
-- `label_summary.csv`, `case_summary.csv`, and paired per-case deltas;
-- `timings.csv` and peak CUDA allocation;
-- `input_diagnostics.csv`, including probability normalization checks;
-- `summary.json`, including paired case-bootstrap confidence intervals, case outcome counts, quantile diagnostics,
-  and full provenance.
-
-Limited runs (`--case-limit`) are marked as smoke tests and the aggregator refuses to include them.
-
-## Leakage-free inference with official v1 models
-
-List or download the author-published models:
-
-```bash
-rankseg-nnunet-bench inventory registry/nnunet_v1_official_models.yaml
-rankseg-nnunet-bench inspect-selections registry/nnunet_v1_official_models.yaml \
-  --output results/OFFICIAL_MODEL_SELECTION.csv \
-  --tasks Task002_Heart Task004_Hippocampus Task005_Prostate
-rankseg-nnunet-bench download-model \
-  registry/nnunet_v1_official_models.yaml Task004_Hippocampus \
-  --output-dir artifacts/models
-```
-
-`inspect-selections` uses HTTP byte-range reads to retrieve only each ZIP directory and official selection metadata,
-not the checkpoints. It prioritizes the task-level `summary.csv`; for older archives without that file, it compares
-the final cross-validation Dice stored in every official `postprocessing.json` and marks the result as a fallback.
-This locks each dataset configuration before any RankSEG result is observed without guessing from RankSEG outcomes.
-
-After installing a model and converting its dataset to nnU-Net v1 raw format, prepare fold-specific inputs:
-
-```bash
-rankseg-nnunet-bench prepare-oof-v1 \
-  --task Task004_Hippocampus \
-  --images-dir "$nnUNet_raw_data_base/nnUNet_raw_data/Task004_Hippocampus/imagesTr" \
-  --output-dir work/v1/oof/Task004_Hippocampus \
-  --model 3d_fullres --trainer nnUNetTrainerV2 --plans nnUNetPlansv2.1
-
-bash work/v1/oof/Task004_Hippocampus/run_oof_inference.sh
-rankseg-nnunet-bench evaluate configs/Task004_Hippocampus_oof.yaml
-```
-
-`prepare-oof-v1` reproduces the official default `KFold(5, shuffle=True, random_state=12345)`. Supply the exact
-`--splits-file` for any task with a custom split. Every case must occur in validation exactly once.
-
-## Aggregate datasets
-
-Only one predeclared configuration per dataset belongs in the Full-16 cross-dataset analysis:
-
-```bash
-bash scripts/build_full_aggregate.sh
-```
-
-The aggregate treats the dataset—not the case or label—as the statistical unit and reports positive/tied/negative
-datasets, argmax and RankSEG mean Dice, median and mean deltas, case improved/stable/worsened counts at ±1 pp, the
-exact sign test, and Wilcoxon signed-rank test. Overall mean Dice is the main endpoint; quantiles are retained as
-diagnostics.
-
-Maintainers with the ignored local results can produce a fresh publication candidate without overwriting the
-checked-in evidence:
-
-```bash
-rankseg-nnunet-bench publish-evidence configs/full16_evidence.yaml \
-  --output-dir evidence-new
-rankseg-nnunet-bench verify-evidence evidence-new
-```
+Large images, checkpoints, probability arrays, and local outputs are intentionally excluded from Git. The compact
+`evidence/` directory contains the published summaries, paired case deltas, available audits, and rebuilt aggregate.
